@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# Rocket_Elevators_Information_System
+
+New Rocket Elevators dynamic webpage & information system
+ 
+>>>>>>> master
