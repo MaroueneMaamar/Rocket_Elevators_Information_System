@@ -9,7 +9,6 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'simple_form'
 gem 'popper_js'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # Use mysql as the database for Active Record
