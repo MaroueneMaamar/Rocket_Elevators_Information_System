@@ -9,5 +9,6 @@ tmp/**/*
 /log/*.log
 /tmp
 .DS_Store
+Admin/.DS_Store
 app/.DS_Store
 app/assets/.DS_Store
