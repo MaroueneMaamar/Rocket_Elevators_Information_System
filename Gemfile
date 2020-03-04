@@ -6,8 +6,8 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.4.1'
 gem 'popper_js'
 gem 'devise'
-gem "font-awesome-rails"
-gem 'font_awesome5_rails'
+# gem "font-awesome-rails"
+# gem 'font_awesome5_rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
