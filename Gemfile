@@ -6,8 +6,8 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.4.1'
 gem 'popper_js'
 gem 'devise'
-gem "font-awesome-rails"
-gem 'font_awesome5_rails'
+# gem "font-awesome-rails"
+# gem 'font_awesome5_rails'
 gem 'activeadmin'
 gem 'cancancan'
 gem 'draper'
