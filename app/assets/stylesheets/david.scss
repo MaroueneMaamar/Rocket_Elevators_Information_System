@@ -42,7 +42,28 @@
 	padding: 14px 28px;
 	font-size: 16px;
 	text-align: center;
-   }
+}
+.btn-colored-message:hover {
+	opacity: 0.98;
+	box-shadow: 0px 0px 2px black;
+}
+.btn-submitform {
+	border-radius:0.4em;
+	font-size:0.875;
+	background-color: #2d49e7;
+	color:white;
+	font-weight:bold;	
+	max-width: 100%;
+	width: 100%;
+	display:block;	
+	padding: 14px 28px;
+	font-size: 16px;
+	text-align: center;
+}
+.btn-submitform:hover {
+	opacity: 0.98;
+	box-shadow: 0px 0px 2px black;
+}
 .selectedOnChangeQuoteForm { 
     color:black; 
     padding: 10px; 
