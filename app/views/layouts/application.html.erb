@@ -35,13 +35,14 @@
 		<%= javascript_include_tag "plugins/slider.revolution/js/jquery.themepunch.revolution.min.js" %>
 		<%= javascript_include_tag "view/demo.revolution_slider.js" %>
 		<%= javascript_include_tag "contact.js" %>
+
+    
   </head>
 
   <body>
-    <h1> test </h1>
-    
+    <%= render "pages/header" %>
     <%= yield %>
-		<%= javascript_include_tag "scripts" %> <% # This must be in body>
-
+    <%= render "pages/footer" %>
+		<%= javascript_include_tag "scripts" %> 
   </body>
 </html>
