@@ -55,30 +55,24 @@
 										<li> <%= link_to 'SUBMISSION'.html_safe, submissionform_path %></li> 
 									<!-- CONTACT -->
 										<li> <%= link_to 'CONTACT'.html_safe, anchor: "contact" %> </li>
-									<% if current_user %>
-										<li><!-- Sign out -->
-											<%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
+									<!-- CONNECT -->
+										<li class="nav-item dropdown">
+											<% if !current_user %>
+												<a class="dropdown-toggle" data-toggle="dropdown" href="#"> CONNECT </a>
+												<ul class="dropdown-menu">
+													<li class="dropdown-item"> <%= link_to('SIGN IN', new_user_session_path) %> </li>
+													<li class="dropdown-item"> <%= link_to('SIGN UP', new_user_registration_path) %> </li>
+											<% else %>
+												<div class="dropdown-toggle"> <%= link_to('SIGN OUT', destroy_user_session_path, :method => :delete) %> </div>
+											<% end %>
 										</li>
-									<% else %>
-										<li><!-- Sign up -->
-											<%= link_to('Sign up', new_user_registration_path) %>
-										</li>
-										<li><!-- Sign in -->
-											<%= link_to('Sign in', new_user_session_path) %>
-										</li>
-									<% end %>
 								</ul>
-
 							</nav>
 						</div>
-
 					</div>
 				</header>
 				<!-- /Top Nav -->
-
 			</div>
-
-
 
 <!-- REVOLUTION SLIDER -->
 			<div class="slider fullwidthbanner-container roundedcorners">
