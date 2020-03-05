@@ -22,65 +22,42 @@
 						</button>
 
 						<!-- Logo -->
-						<a class="logo float-left" href="index.html">
-							<%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo") %>
-						</a>
+                        <%= link_to index_path, class: "logo float-left" do %><%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo")%><% end %>
+
 
 						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
 							<nav class="nav-main">
 
-								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-									<li class="active"><!-- HOME -->
-										<a href="index.html">
-											HOME
-										</a>
-									</li>
-									<li><!-- SERVICES -->
-										<a href="index.html#services">
-											SERVICES
-										</a>
-									</li>
-									<li class="nav-item dropdown"><!-- PORTFOLIO -->
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-										  PORTFOLIO 
-										</a>
-										<ul class="dropdown-menu">
-										  <li class="dropdown-item"><a href="index.html#portfolio">Overview</a></li>
-										  <li class="dropdown-item divider"></li>
-										  <li class="dropdown-item"><a href="residential.html">Residential Projects</a></li>
-										  <li class="dropdown-item divider"></li>
-										  <li class="dropdown-item"><a href="corporate.html">Corporate Projects</a></li>
-										</ul>
-									</li>
-
-									<li><!-- NEWS -->
-										<a href="index.html#news">
-											NEWS
-										</a>
-									</li>
-									<li><!-- CLIENTS -->
-										<a href="index.html#clients">
-											CLIENTS
-										</a>
-									</li>
-									<li><!-- SUBMISSION FORM -->
-										<a href="submissionform.html">
-											SUBMISSION
-										</a>
-									</li>
-									<li><!-- CONTACT -->
-										<a href="index.html#contact">
-											CONTACT
-										</a>
-									</li>
-								</ul>
-
-							</nav>
+                            <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+                            <!-- HOME -->
+                                <li class="active"> <%= link_to 'HOME'.html_safe, index_path %> </li>
+                            <!-- SERVICES -->
+                                <li> <%= link_to 'SERVICES'.html_safe, index_path(anchor: "services") %> </li>
+                            <!-- PORTFOLIO -->
+                                <li class="nav-item dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> PORTFOLIO </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><%= link_to 'Overview'.html_safe, index_path(anchor: "portfolio") %></li>
+                                        <li class="dropdown-item divider"></li>
+                                        <li class="dropdown-item"><%= link_to 'Residential Projects'.html_safe, residential_path %></li>
+                                        <li class="dropdown-item divider"></li>
+										<li class="dropdown-item"><%= link_to 'Corporate Projects'.html_safe, corporate_path %></li>
+                                    </ul>
+                                </li>
+                            <!-- NEWS -->
+                                <li> <%= link_to 'NEWS'.html_safe, index_path(anchor: "news") %> </li>
+                            <!-- CLIENTS -->
+                                <li> <%= link_to 'CLIENTS'.html_safe, index_path(anchor: "clients") %> </li>
+                            <!-- SUBMISSION FORM -->
+								<li> <%= link_to 'SUBMISSION'.html_safe, submissionform_path %></li>
+                            <!-- CONTACT -->
+                                <li> <%= link_to 'CONTACT'.html_safe, anchor: "contact" %> </li>
+                            </ul>
+                        </nav>
 						</div>
 
 					</div>
 				</header>
-				<!-- /Top Nav -->
 
 			</div>
 
@@ -267,9 +244,9 @@
 				<div class="copyright p-15">
 					<div class="container">
 						<ul class="float-right m-0 list-inline mobile-block">
-							<li><a href="tos.html">Terms & Conditions</a></li>
+							<li> <%= link_to 'Terms & Conditions'.html_safe, tos_path %></li>
 							<li>&bull;</li>
-							<li><a href="privacy.html">Privacy</a></li>
+							<li> <%= link_to 'Privacy'.html_safe, privacy_path %></li>
 						</ul>
 						&copy; All Rights Reserved, Company LTD
 					</div>
