@@ -1,7 +1,5 @@
 <%# THIS IS THE SIGN UP PAGE %>
 
-
-
 <html>
   <head>
   </head>
@@ -19,7 +17,7 @@
 		</button> %>
 
 		<!-- Logo -->
-		<a class="logo float-left scrollTo" href="/app/views/pages/index.html.erb">
+		<a class="logo float-left scrollTo" href="/pages/index.html">
 			<%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo") %>
 		</a>
 
@@ -45,8 +43,8 @@
 <div class="login-form">
 <div class="main-div">
     <div class="panel">
-    	<br>
-   		<p>Please enter email and password</p>
+    <h1>REGISTER</h1>
+   		<p>Please enter email and password to register.</p>
 	</div>
    
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
