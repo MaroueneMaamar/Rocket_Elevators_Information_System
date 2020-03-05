@@ -5,16 +5,9 @@
 		<title>Rocket Elevators</title>
 		<meta name="description" content="Projet Genesis" />
 		<meta name="Author" content="David Amyot" />
-
-		<!-- mobile settings -->
-		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-
 	</head>
 
 	<body class="smoothscroll enable-animation">
-
-		<div id="wrapper">
-
 			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
 
 				<!-- TOP NAV -->
@@ -29,7 +22,7 @@
 						<!-- Logo -->
 						<div>
 						<a class="logo float-left" href="index.html">
-							<img src="assets/images/logo.jpeg" alt="Rocket Elevators Logo" />
+							<%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo") %>
 						</a>
 					</div>
 
@@ -89,7 +82,7 @@
 			</div>
 
 <!-- RIBBON -->
-			<section class="parallax parallax-1" style="background-image: url('assets/images/ribbon.jpeg');">
+			<section class="parallax parallax-1" style="background-image: url(<%= asset_path "ribbon.jpeg" %>)">
 				<div class="overlay dark-5"></div>
 
 				<div class="container">
@@ -120,7 +113,7 @@
 
 				<!-- RESIDENTIAL PROJECTS SECTION -->
 
-						<!-- RESIDENTIAL PROJECT #1 -->
+					<!-- RESIDENTIAL PROJECT #1 -->
 						<div class="col-md-3 col-sm-3 mix residential-projects">
 							<div class="item-box">
 								<figure>
@@ -132,7 +125,7 @@
 											</a>
 										</span>
 									</span>
-									<img class="img-fluid h-200" src="assets/images/res-elevator1.jpeg" width="600" height="399" alt="Picture of residential project #1">
+									<%= image_tag("res-elevator1.jpeg", class: "img-fluid h-200", width: "600", height: "399", alt: "Picture of residential project #1") %>
 								</figure>
 								<div class="item-box-desc">
 									<h3>Frankeinstein's Laboratory</h3>
@@ -155,7 +148,7 @@
 											</a>
 										</span>
 									</span>
-									<img class="img-fluid h-200" src="assets/images/res-elevator2.jpeg" width="600" height="399" alt="Picture of residential project #2">
+									<%= image_tag("res-elevator2.jpeg", class: "img-fluid h-200", width: "600", height: "399", alt: "Picture of residential project #2") %>
 								</figure>
 								<div class="item-box-desc">
 									<h3>Spiderman's Web-House</h3>
@@ -178,7 +171,7 @@
 											</a>
 										</span>
 									</span>
-									<img class="img-fluid h-200" src="assets/images/res-elevator3.jpeg" width="600" height="399" alt="Picture of residential project #3">
+									<%= image_tag("res-elevator3.jpeg", class: "img-fluid h-200", width: "600", height: "399", alt: "Picture of residential project #3") %>
 								</figure>
 								<div class="item-box-desc">
 									<h3>Superman's Leave-Me-Alone House</h3>
@@ -201,7 +194,7 @@
 											</a>
 										</span>
 									</span>
-									<img class="img-fluid h-200" src="assets/images/res-elevator4.jpeg" width="600" height="399" alt="Picture of residential project #4">
+									<%= image_tag("res-elevator4.jpeg", class: "img-fluid h-200", width: "600", height: "399", alt: "Picture of residential project #4") %>
 								</figure>
 								<div class="item-box-desc">
 									<h3>Batman's Batcave</h3>
@@ -362,7 +355,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<img class="img-footer-logo" src="assets/images/logo.jpeg" alt="Rocket Elevator's Logo" />
+							<%= image_tag("logo.jpeg", class: "img-footer-logo", alt: "Rocket Elevator's Logo") %>
 						</div>
 						<div class="col-md-6 mt-2 justify">
 							<!-- Small Description -->
@@ -399,8 +392,6 @@
 					</div>
 				</div>
 			</footer>
-
-</div>
 
 <!-- SCROLL TO TOP -->
 <a href="#" id="toTop"></a>

@@ -28,7 +28,7 @@
 
                     <!-- Logo -->
                     <a class="logo float-left" href="index.html">
-                        <img src="assets/images/logo.jpeg" alt="Rocket Elevators Logo" />
+                        <%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo") %>
                     </a>
 
                     <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
@@ -91,7 +91,7 @@
             </header>
         </div>
 
-        <section class="parallax parallax-1" style="background-image: url('assets/images/ribbon.jpeg');">
+        <section class="parallax parallax-1" style="background-image: url(<%= asset_path "ribbon.jpeg" %>)">
             <div class="overlay dark-5"></div>
 
             <div class="container">
@@ -568,7 +568,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <img class="img-footer-logo" src="assets/images/logo.jpeg" alt="Rocket Elevator's Logo" />
+                        <%= image_tag("logo.jpeg", class: "img-footer-logo", alt: "Rocket Elevator's Logo") %>
                     </div>
                     <div class="col-md-6 mt-2 justify">
                         <!-- Small Description -->
@@ -619,7 +619,7 @@
     </div><!-- /PRELOADER -->
 
     <!-- JAVASCRIPT FILES -->
-<%= javascript_include_tag "plugins/jquery/jquery-3.3.1.min" %>
+    <%= javascript_include_tag "plugins/jquery/jquery-3.3.1.min" %>
     <%= javascript_include_tag "plugins/jquery/jquery.formatCurrency-1.4.0" %>
 
     
