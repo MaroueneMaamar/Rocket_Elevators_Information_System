@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :posts
-  devise_for :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
+  devise_for :users do
+  get '/users/sign_out' => 'devise/sessions#destroy'
+end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'pages/index'
