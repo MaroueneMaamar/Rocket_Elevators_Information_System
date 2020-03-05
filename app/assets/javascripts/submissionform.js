@@ -190,6 +190,7 @@ function loadElementsInTab(selectedTab) {
             $("#numberOfBasements").closest(".row").detach().appendTo("#tabResidential .card-block");
             $("#jobQualityStandard").closest(".row").detach().appendTo("#tabResidential .card-block");
             $("#totalNumberOfElevators").closest(".row").detach().appendTo("#tabResidential .card-block"); 
+            $("#submitform").closest(".row").detach().appendTo("#tabResidential .card-block"); 
             break;
         case "tabCommercial":
             $("#errorContainer").closest(".row").detach().appendTo("#tabCommercial .card-block");
@@ -200,6 +201,7 @@ function loadElementsInTab(selectedTab) {
             $("#numberOfElevatorsDesired").closest(".row").detach().appendTo("#tabCommercial .card-block");
             $("#jobQualityStandard").closest(".row").detach().appendTo("#tabCommercial .card-block");
             $("#totalNumberOfElevators").closest(".row").detach().appendTo("#tabCommercial .card-block");
+            $("#submitform").closest(".row").detach().appendTo("#tabCommercial .card-block");
             break;
         case "tabCorporate":
             $("#errorContainer").closest(".row").detach().appendTo("#tabCorporate .card-block");
@@ -210,6 +212,7 @@ function loadElementsInTab(selectedTab) {
             $("#numberOfOccupants").closest(".row").detach().appendTo("#tabCorporate .card-block");
             $("#jobQualityStandard").closest(".row").detach().appendTo("#tabCorporate .card-block");
             $("#totalNumberOfElevators").closest(".row").detach().appendTo("#tabCorporate .card-block");
+            $("#submitform").closest(".row").detach().appendTo("#tabCorporate .card-block");
             break;
         case "tabHybrid":
             $("#errorContainer").closest(".row").detach().appendTo("#tabHybrid .card-block");
@@ -221,6 +224,7 @@ function loadElementsInTab(selectedTab) {
             $("#numberOfHoursOfActivity").closest(".row").detach().appendTo("#tabHybrid .card-block");
             $("#jobQualityStandard").closest(".row").detach().appendTo("#tabHybrid .card-block");
             $("#totalNumberOfElevators").closest(".row").detach().appendTo("#tabHybrid .card-block");
+            $("#submitform").closest(".row").detach().appendTo("#tabHybrid .card-block");
             break;
         default:
     }
@@ -268,28 +272,6 @@ function calculateQuote() {
     var numberOfFloors = $("#numberOfFloors").val();
     var numberOfBasements = $("#numberOfBasements").val();
     var jobQuality = $("input[name='jobQuality']:checked").val();
-
-
-    // Trying to validate the form but wasn't working as good as intended.
-/* 
-    if (!Number.isInteger(numberOfFloors) || parseInt(numberOfFloors) <= 0) {
-         errorValidation.push("Number Of Floors : Please put a whole number above 0.");
-    }
-
-    if (!Number.isInteger(numberOfBasements) || numberOfBasements < 0) {
-         errorValidation.push("Number Of Basements : Please put a whole number.");
-    }
-
-    if ((jQuery.inArray(jobQuality, enumJobQuality) == -1)) {
-        errorValidation.push("Budget Buttons : Please check one of the buttons.");
-    }
-
-
-    if(hasError()) {
-        showErrors();
-        return;
-    } 
-*/
 
     // Making a switch to prevent the repetitive use of many if statements. Pushing the results of the calculations as a parameter in updateUIEstimatedResults().
     switch (currentTab) {
@@ -430,7 +412,6 @@ function calculateQuote() {
     the calculateQuote() functon (which transforms inputs in variables) in a change event function.
 */
 
-
 function updateUIEstimatedResults(elevators, subTotal, installationFees, totalPrice) {
     $("#totalNumberOfElevators").html(Math.ceil((elevators) || 0));
     $("#subTotal").html(roundPrice(subTotal));
@@ -440,34 +421,7 @@ function updateUIEstimatedResults(elevators, subTotal, installationFees, totalPr
     $("#subTotal").formatCurrency();
     $("#installationFees").formatCurrency();
     $("#totalPrice").formatCurrency();
-
-    // var mileage = $('.mileageInput').asNumber();
-}
-
-// $('.currency').blur(function()
-//         {
-//             $('.currency').formatCurrency();
-//         });
-
-// Return true/false if there's an error.
-// function hasError() {
-//     return errorValidation.length >= 1;
-// }
-
-// function showErrors() {
-//     if (!hasError()) {
-//         // $("#errorContainer").html("");
-//         return;
-//     }
-//     $("#errorContainer").html("");
-//     var output = "";
-//     $.each(errorValidation, function(key,value) {
-//         output += value + "<br />";
-//     }); 
-//     $("#errorContainer").html(output);   
-//     return;             
-
-// }
+    }
 
 /*
     This is a round function I found on google and imported. I simply removed the "digits" parameter since it'll always be 2 digits for me.

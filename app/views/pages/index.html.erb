@@ -26,90 +26,53 @@
 						</button>
 
 						<!-- Logo -->
-						<a class="logo float-left scrollTo" href="#top">
-							<%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo") %>
-						</a>
-
+						<a class="logo float-left scrollTo" href="#top"> <%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo") %> </a>
+							
 						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
 							<nav class="nav-main">
 
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-									<li class="active"><!-- HOME -->
-										<a href="#home">
-											HOME
-										</a>
-									</li>
-									<li><!-- SERVICES -->
-										<a href="#services">
-											SERVICES
-										</a>
-									</li>
-									<li class="nav-item dropdown"><!-- PORTFOLIO -->
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-										  PORTFOLIO 
-										</a>
-										<ul class="dropdown-menu">
-										  <li class="dropdown-item"><a href="#portfolio">Overview</a></li>
-										  <li class="dropdown-item divider"></li>
-										  <li class="dropdown-item"><a href="residential.html">Residential Projects</a></li>
-										  <li class="dropdown-item divider"></li>
-										  <li class="dropdown-item"><a href="corporate.html">Corporate Projects</a></li>
-										</ul>
-									</li>
-
-									<li><!-- NEWS -->
-										<a href="#news">
-											NEWS
-										</a>
-									</li>
-									<li><!-- CLIENTS -->
-										<a href="#clients">
-											CLIENTS
-										</a>
-									</li>
-									<li><!-- SUBMISSION FORM -->
-										<a href="submissionform.html">
-											SUBMISSION
-										</a>
-									</li>
-									<li><!-- CONTACT -->
-										<a href="#contact">
-											CONTACT
-										</a>
-									</li>
-									
-									<li class="nav-item dropdown"><!-- Sign in -->
-									<% if !current_user %>
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-										  CONNECT 
-										</a>
-										<ul class="dropdown-menu">
-											<li class="dropdown-item"><!-- Sign in -->
-												<%= link_to('SIGN IN', new_user_session_path) %>
-											</li>
-											<li class="dropdown-item">
-												<%= link_to('SIGN UP', new_user_registration_path) %>
-											</li>
-									<% else %>
-										<div class="dropdown-toggle">
-										  <%= link_to('SIGN OUT', destroy_user_session_path, :method => :delete) %>
-										</div>
-									<% end %>
-
-										
-									</li>
+									<!-- HOME -->
+										<li class="active"> <%= link_to 'HOME'.html_safe, anchor: "home" %> </li>
+									<!-- SERVICES -->
+										<li> <%= link_to 'SERVICES'.html_safe, anchor: "services" %> </li>
+									<!-- PORTFOLIO -->
+										<li class="nav-item dropdown">
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#portfolio"> PORTFOLIO </a>
+											<ul class="dropdown-menu">
+												<li class="dropdown-item"><%= link_to 'Overview'.html_safe, anchor: "portfolio" %></li>
+												<li class="dropdown-item divider"></li>
+												<li class="dropdown-item"><%= link_to 'Residential Projects'.html_safe, residential_path %></li>
+												<li class="dropdown-item divider"></li>
+												<li class="dropdown-item"><%= link_to 'Corporate Projects'.html_safe, corporate_path %></li>
+											</ul>
+										</li>
+									<!-- NEWS -->
+										<li> <%= link_to 'NEWS'.html_safe, anchor: "news" %> </li>
+									<!-- CLIENTS -->
+										<li> <%= link_to 'CLIENTS'.html_safe, anchor: "clients" %> </li>
+									<!-- SUBMISSION FORM -->
+										<li> <%= link_to 'SUBMISSION'.html_safe, submissionform_path %></li> 
+									<!-- CONTACT -->
+										<li> <%= link_to 'CONTACT'.html_safe, anchor: "contact" %> </li>
+									<!-- CONNECT -->
+										<li class="nav-item dropdown">
+											<% if !current_user %>
+												<a class="dropdown-toggle" data-toggle="dropdown" href="#"> CONNECT </a>
+												<ul class="dropdown-menu">
+													<li class="dropdown-item"> <%= link_to('SIGN IN', new_user_session_path) %> </li>
+													<li class="dropdown-item"> <%= link_to('SIGN UP', new_user_registration_path) %> </li>
+											<% else %>
+												<div class="dropdown-toggle"> <%= link_to('SIGN OUT', destroy_user_session_path, :method => :delete) %> </div>
+											<% end %>
+										</li>
 								</ul>
-
 							</nav>
 						</div>
-
 					</div>
 				</header>
 				<!-- /Top Nav -->
-
 			</div>
-
-
 
 <!-- REVOLUTION SLIDER -->
 			<div class="slider fullwidthbanner-container roundedcorners">
@@ -304,7 +267,7 @@
 						<h2 class="fs-40 fw-300"><i><b>Rocket Elevators</i></b>, delivering the highest quality since 1982.</h2>
 						<a class="btn btn-warning btn-lg btn-colored-primary" href="#contact">CONTACT US &nbsp; <i class="fa fa-angle-right"></i></a>
 						&nbsp; OR &nbsp; 
-						<a class="btn btn-default btn-lg btn-colored-secondary" href="submissionform.html">REQUEST A SUBMISSION &nbsp; <i class="fa fa-angle-right"></i></a> 
+						<%= link_to 'REQUEST A SUBMISSION &nbsp; <i class="fa fa-angle-right"></i>'.html_safe, submissionform_path, class: "btn btn-default btn-lg btn-colored-secondary" %>
 					</div>
 
 
@@ -866,7 +829,7 @@
 
 <section id="contact">
 	<div class="container">
-		<header class="text-center mb-60">
+		<header class="text-center">
 			<h2>Contact Us</h2>
 			<hr />
 		</header>
@@ -1039,9 +1002,9 @@
 				<div class="copyright p-15">
 					<div class="container">
 						<ul class="float-right m-0 list-inline mobile-block">
-							<li><a href="tos.html">Terms & Conditions</a></li>
+							<li> <%= link_to 'Terms & Conditions'.html_safe, tos_path %></li>
 							<li>&bull;</li>
-							<li><a href="privacy.html">Privacy</a></li>
+							<li> <%= link_to 'Privacy'.html_safe, privacy_path %></li>
 						</ul>
 						&copy; All Rights Reserved, Company LTD
 					</div>
