@@ -131,7 +131,7 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+   config.allow_unconfirmed_access_for = 2.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -240,7 +240,7 @@ Devise.setup do |config|
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-  # config.sign_out_all_scopes = true
+  config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
@@ -255,7 +255,6 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
-
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
@@ -296,4 +295,5 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
 end
