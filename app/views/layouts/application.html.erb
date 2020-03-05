@@ -8,13 +8,11 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin', type: 'text/css', 'data-turbolinks-track' => true %>
 
-    <!-- WEB FONTS : use %7C instead of | (pipe) -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-
-    <!-- CORE CSS -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
+    <link href="assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/slider.revolution/css/settings.css" rel="stylesheet" type="text/css" />
     <!-- DEVISE -->
     <%
 =begin%>
@@ -23,7 +21,7 @@
 <%
 =end%>
 
-    <!-- THEME CSS -->	
+    <!-- THEMES -->	
     <%= stylesheet_link_tag "essentials" %>
     <%= stylesheet_link_tag "layout" %>
     <%= stylesheet_link_tag "header-1" %>
@@ -31,46 +29,19 @@
     <%= stylesheet_link_tag "david" %>
 
 		<!-- REVOLUTION SLIDER -->
-		<link href="assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
-		<link href="assets/plugins/slider.revolution/css/settings.css" rel="stylesheet" type="text/css" />
-
+    <script>var plugin_path = '/assets/plugins/';</script> 
+		<%= javascript_include_tag "plugins/jquery/jquery-3.3.1.min.js" %>
+    <%= javascript_include_tag "plugins/slider.revolution/js/jquery.themepunch.tools.min" %>
+		<%= javascript_include_tag "plugins/slider.revolution/js/jquery.themepunch.revolution.min.js" %>
+		<%= javascript_include_tag "view/demo.revolution_slider.js" %>
+		<%= javascript_include_tag "contact.js" %>
   </head>
 
   <body>
     <h1> test </h1>
-    <%= yield %>
-
-    <!-- JAVASCRIPT FILES -->
-
-
-
-    <%
-=begin%>
- <%= javascript_include_tag "application" %> 
-<%
-=end%>
-    <script>var plugin_path = '/assets/plugins/';</script> 
-
     
-		<script>var plugin_path = 'assets/plugins/';</script>
-		<%= javascript_include_tag "plugins/jquery/jquery-3.3.1.min.js" %>
-		<%= javascript_include_tag "scripts" %>
-		<%= javascript_include_tag "plugins/slider.revolution/js/jquery.themepunch.tools.min" %>
-		<%= javascript_include_tag "plugins/slider.revolution/js/jquery.themepunch.revolution.min.js" %>
-		<%= javascript_include_tag "view/demo.revolution_slider.js" %>
-		<%= javascript_include_tag "contact.js" %>
-
-    <%
-=begin%>
- <%= javascript_include_tag "plugins/jquery/jquery-3.3.1.min" %>
-
-		<%= javascript_include_tag "scripts" %>
-		<%= javascript_include_tag "plugins/slider.revolution/js/jquery.themepunch.tools.min" %>
-		<%= javascript_include_tag "plugins/slider.revolution/js/jquery.themepunch.revolution.min" %>
-		<%= javascript_include_tag "view/demo.revolution_slider" %>
-		<%= javascript_include_tag "contact" %>   
-<%
-=end%>
+    <%= yield %>
+		<%= javascript_include_tag "scripts" %> <% # This must be in body>
 
   </body>
 </html>
