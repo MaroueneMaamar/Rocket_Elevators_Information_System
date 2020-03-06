@@ -2,11 +2,8 @@ Rails.application.routes.draw do
 
   resources :posts
   
-  devise_for :users do
-    get "/sign_in" => "devise/sessions#new" # custom path to login/sign_in
-    get "/sign_out" => "devise/sessions#destroy"
-    get "/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
-  end
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
+  
 
   get '/index' => "pages#index"
   root 'pages#index'
