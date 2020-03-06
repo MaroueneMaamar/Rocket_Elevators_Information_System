@@ -31,6 +31,8 @@ role :db,  %w{ubuntu@34.203.94.126}
 
 
 
+
+
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb

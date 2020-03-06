@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
   
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get '/index' => "pages#index"
   root 'pages#index'
@@ -15,7 +16,5 @@ Rails.application.routes.draw do
   get '/404' => "pages#404"
   get '/tos'  => "pages#tos"
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

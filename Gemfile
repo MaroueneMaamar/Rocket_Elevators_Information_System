@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.6.5'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.4.1'
 gem 'popper_js'
 gem 'devise'
 # gem "font-awesome-rails"
 # gem 'font_awesome5_rails'
-gem 'activeadmin'
+gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
