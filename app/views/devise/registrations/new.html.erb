@@ -1,54 +1,7 @@
-<%# THIS IS THE SIGN UP PAGE %>
+<h2>Sign up</h2>
 
-<html>
-  <head>
-  </head>
-
-<body id="LoginForm">
-<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
-
-<!-- TOP NAV -->
-<header id="topNav">
-	<div class="container">
-
-		<%# <!-- Mobile Menu Button -->
-		<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-			<i class="fa fa-bars"></i>
-		</button> %>
-
-		<!-- Logo -->
-		<a class="logo float-left scrollTo" href="/pages/index.html">
-			<%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo") %>
-		</a>
-
-		<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
-			<nav class="nav-main">
-
-				<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-					<%# <li class="active"><!-- HOME -->
-						<a href="#home">
-							HOME
-						</a> %>
-					</li>									
-				</ul>
-			</nav>
-		</div>
-
-	</div>
-</header>
-<!-- /Top Nav -->
-
-</div>
-<div class="container">
-<div class="login-form">
-<div class="main-div">
-    <div class="panel">
-    <h1>REGISTER</h1>
-   		<p>Please enter email and password to register.</p>
-	</div>
-   
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-		<%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -71,10 +24,6 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-		<% end %>
-	<%= render "devise/shared/links" %>
-</div></div></div>
+<% end %>
 
-
-</body>
-</html>
+<%= render "devise/shared/links" %>
