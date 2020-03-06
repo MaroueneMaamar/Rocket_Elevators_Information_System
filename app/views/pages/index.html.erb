@@ -63,7 +63,7 @@
 													<li class="dropdown-item"> <%= link_to('SIGN IN', new_user_session_path) %> </li>
 													<li class="dropdown-item"> <%= link_to('SIGN UP', new_user_registration_path) %> </li>
 											<% else %>
-												<div class="dropdown-toggle"> <%= link_to('SIGN OUT', destroy_user_session_path, :method => :delete) %> </div>
+												<%= link_to('SIGN OUT', destroy_user_session_path, method: :delete) %>
 											<% end %>
 										</li>
 								</ul>

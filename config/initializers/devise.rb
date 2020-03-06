@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '5f6f8746ae7732c65023a08b6788cc2ca83afaa73e56d59792bbb4908afa85786a5b89c87e11d144ad92c5de98943e6fa69fd391bf2d00e6619afdd00d652764'
+  # config.secret_key = '7afa7356dd7fc35230728735d7cfbd05c3defddec417cb687310deb33eac78e1866b7be849f7c0eba91c9f40163109bf602c38c84ca478b9c368ab1f94a65ff4'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -114,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '009fd8d9a802be6fe055679e7a456ba8660e71ecdb5ef686a5cd256ab9f515a27baba7dbf5186cec80775b0189d66919417af71566b3504c3286e252099ce272'
+  # config.pepper = '346323c0b3f98a5bb5aef6c0863b705aaf61f69df34b498f5192331c249dd1b03a617d6ae8ae28c9e807b61e10472f3ec5c40eb97481c3d0f545f4fa434ec997'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -131,7 +131,7 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-   config.allow_unconfirmed_access_for = 2.days
+  # config.allow_unconfirmed_access_for = 2.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -240,7 +240,7 @@ Devise.setup do |config|
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-  config.sign_out_all_scopes = true
+  # config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
@@ -254,7 +254,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -296,5 +296,4 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-
 end
