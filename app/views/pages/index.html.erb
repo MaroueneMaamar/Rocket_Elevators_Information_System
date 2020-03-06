@@ -60,10 +60,10 @@
 											<% if !current_user %>
 												<a class="dropdown-toggle" data-toggle="dropdown" href="#"> CONNECT </a>
 												<ul class="dropdown-menu">
-													<li class="dropdown-item"> <%= link_to('SIGN IN', new_user_session_path) %> </li>
+													<li class="dropdown-item"> <%= link_to('LOGIN', new_user_session_path) %> </li>
 													<li class="dropdown-item"> <%= link_to('SIGN UP', new_user_registration_path) %> </li>
 											<% else %>
-												<%= link_to('SIGN OUT', destroy_user_session_path, method: :delete) %>
+												<%= link_to('LOGOUT', destroy_user_session_path, method: :delete) %>
 											<% end %>
 										</li>
 								</ul>
