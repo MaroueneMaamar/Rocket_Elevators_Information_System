@@ -14,3 +14,5 @@
 /app/assets/.DS_Store
 /config/database.yml
 /log/development.log
+/node_modules
+yarn.lock
