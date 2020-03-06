@@ -1,0 +1,43 @@
+
+---
+admin_users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - firstNname
+  - name
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - confirmation_token
+  - confirmed_at
+  - confirmation_sent_at
+  - unconfirmed_email
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - admin@example.com
+    - "$2a$11$OnG9SmkRS.hFSM08PMScqOlQQoDmw4HLv4BFDyj12t19DHigUuLeK"
+    - ''
+    - ''
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 2020-03-06 00:46:43.000000000 Z
+    - 2020-03-06 00:46:43.000000000 Z
