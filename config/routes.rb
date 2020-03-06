@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   get '/index' => "pages#index"
   root 'pages#index'
-
   get '/residential' => "pages#residential"
   get '/corporate' => "pages#corporate"
   get '/submissionform' => "pages#submissionform"
