@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
   
-
-  get '/index' => "pages#index"
   root 'pages#index'
-
+  get '/index' => "pages#index"
   get '/residential' => "pages#residential"
   get '/corporate' => "pages#corporate"
   get '/submissionform' => "pages#submissionform"
