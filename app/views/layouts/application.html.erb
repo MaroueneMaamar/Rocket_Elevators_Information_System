@@ -32,13 +32,10 @@
   </head>
 
   <body>
-    <div class="container">
-      <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
-      <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
-    </div>
-    
     <%= yield %>
+		<%= javascript_include_tag "scripts" %> 
 
-    <%= javascript_include_tag "scripts" %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
   </body>
 </html>

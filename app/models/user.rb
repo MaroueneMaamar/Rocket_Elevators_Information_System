@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> parent of fd12552... Safety push before doing a superadmin to user table
 end
