@@ -1,9 +1,3 @@
-class PostsController < InheritedResources::Base
-
-  private
-
-    def post_params
-      params.require(:post).permit(:title, :body)
-    end
-
+class PostsController < ApplicationController
+  before_action :authenticate_user!
 end

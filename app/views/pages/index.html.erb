@@ -64,6 +64,13 @@
 												<ul class="dropdown-menu">
 													<li class="dropdown-item"> <%= link_to('SIGN IN', new_user_session_path) %> </li>
 													<li class="dropdown-item"> <%= link_to('SIGN UP', new_user_registration_path) %> </li>
+												</ul>
+											<% elsif current_user.admin %>
+												<a class="dropdown-toggle" data-toggle="dropdown" href="#"> ADMIN SECTION </a>
+												<ul class="dropdown-menu">
+													<li class="dropdown-item"> <%= link_to('ADMIN SECTION' .html_safe, rails_admin_path) %> </li>
+													<li class="dropdown-item"> <%= link_to('LOGOUT', destroy_user_session_path, method: :delete) %> </li>
+												</ul>
 											<% else %>
 												<%= link_to('SIGN OUT', destroy_user_session_path, method: :delete) %>
 											<% end %>

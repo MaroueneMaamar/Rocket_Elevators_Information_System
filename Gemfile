@@ -1,20 +1,26 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.7'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.4.1'
 gem 'popper_js'
 gem 'devise'
 # gem "font-awesome-rails"
 # gem 'font_awesome5_rails'
-gem 'activeadmin'
+gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 gem 'active_admin_flat_skin'
 gem 'yaml_db'
 gem 'devise-bootstrap-views', '~> 1.0'
+
+gem 'capistrano', '~> 3.10', require: false
+gem 'capistrano-rails', '~> 1.4', require: false
+gem 'capistrano-bundler', '>= 1.1.0'
+gem 'rvm1-capistrano3', require: false
+gem 'capistrano3-puma'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
