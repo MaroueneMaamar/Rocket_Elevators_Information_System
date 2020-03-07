@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.7'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.4.1'
 gem 'popper_js'
