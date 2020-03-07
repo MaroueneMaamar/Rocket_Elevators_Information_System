@@ -2,6 +2,8 @@
 
 WEEK 4 - Web Programming With Ruby On Rails
 
+Video showcase : https://www.youtube.com/watch?v=GW2fWb9IqHY
+
 Features :
 - Beautiful website;
 - Beautiful programmers;
