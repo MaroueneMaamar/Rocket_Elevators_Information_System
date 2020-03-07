@@ -14,6 +14,7 @@ Features :
 INSTRUCTIONS
 
 Admin email : default@example.com
+
 Admin pass. : password
 
 Since this is on localhost, an admin needs to be created at first. If the default admin auth (shown above) does not work, please do the following :
