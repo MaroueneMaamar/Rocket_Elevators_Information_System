@@ -121,7 +121,7 @@
                     <!-- Number of Floors-->
                         <div class="row">
                             <div class="col-md-6">
-                                <label class="mr-0" for="NumFLoors">The number of floors contained in the building:</label>
+                                <label class="mr-0" for="numberOfFloors">The number of floors contained in the building:</label>
                             </div>
                             
                             <div class="col-md-4 mt-10">
@@ -131,7 +131,7 @@
                             </div>
 
                             <div class="col-md-2 mt-0 pb-5">
-                                <input type="text" style="margin-top:-8px;" name="quotesNumFLoors" id="NumFLoors" value="0" min="0" max="1000" class="form-control stepper sliderValue50 calculateQuoteOnChange" />
+                                <input type="text" style="margin-top:-8px;" name="quotes[NumFLoors]" id="numberOfFloors" value="0" min="0" max="1000" class="form-control stepper sliderValue50 calculateQuoteOnChange" />
                             </div> 
                         </div>
 
@@ -148,7 +148,7 @@
                             </div>
 
                             <div class="col-md-2 mt-0 pb-5">
-                                <input type="text" style="margin-top:-8px;" id="numberOfBasements" value="0" min="0" max="1000" class="form-control stepper sliderNumber20 calculateQuoteOnChange" />
+                                <input type="text" style="margin-top:-8px;" name="quotes[NumBasement]" id="numberOfBasements" value="0" min="0" max="1000" class="form-control stepper sliderNumber20 calculateQuoteOnChange" />
                             </div>
                         </div>
 
@@ -166,7 +166,7 @@
                             </div>
 
                             <div class="col-md-2 mt-0 pb-5">
-                                <input type="text" style="margin-top:-8px;" id="numberOfApartments" value="0" min="0" max="1000" class="form-control required stepper sliderNumber200 calculateQuoteOnChange" />
+                                <input type="text" style="margin-top:-8px;" name="quotes[NumAppartment]" id="numberOfApartments" value="0" min="0" max="1000" class="form-control required stepper sliderNumber200 calculateQuoteOnChange" />
                             </div>
                         </div>
 
@@ -183,7 +183,7 @@
                             </div>
 
                             <div class="col-md-2 mt-0 pb-5">
-                                <input type="text" style="margin-top:-8px;" id="numberOfParking" value="0" min="0" max="1000" class="form-control stepper sliderNumber500 calculateQuoteOnChange" />
+                                <input type="text" style="margin-top:-8px;" name="quotes[NumParking]" id="numberOfParking" value="0" min="0" max="1000" class="form-control stepper sliderNumber500 calculateQuoteOnChange" />
                             </div>
                         </div>
 
@@ -200,7 +200,7 @@
                             </div>
 
                             <div class="col-md-2 mt-0 pb-5">
-                                <input type="text" style="margin-top:-8px;" id="numberOfElevatorsDesired" value="0" min="0" max="1000" class="form-control stepper sliderValue50 calculateQuoteOnChange" />
+                                <input type="text" style="margin-top:-8px;" name="quotes[NumElevatorsDesired]" id="numberOfElevatorsDesired" value="0" min="0" max="1000" class="form-control stepper sliderValue50 calculateQuoteOnChange" />
                             </div>
                         </div>
 
@@ -234,7 +234,7 @@
                             </div>
 
                             <div class="col-md-2 mt-0 pb-5">
-                                <input type="text" style="margin-top:-8px;" id="numberOfOccupants" value="0" min="0" max="1000" class="form-control stepper sliderNumber500 calculateQuoteOnChange" />
+                                <input type="text" style="margin-top:-8px;" name="quotes[NumOccupantsPerFloor]" id="numberOfOccupants" value="0" min="0" max="1000" class="form-control stepper sliderNumber500 calculateQuoteOnChange" />
                             </div>
                         </div>
 
@@ -251,7 +251,7 @@
                             </div>
 
                             <div class="col-md-2 mt-0 pb-5">
-                                <input type="text" style="margin-top:-8px;" id="numberOfBusinesses" value="0" min="0" max="1000" class="form-control stepper sliderValue10 calculateQuoteOnChange" />
+                                <input type="text" style="margin-top:-8px;" name="quotes[NumBusiness]" id="numberOfBusinesses" value="0" min="0" max="1000" class="form-control stepper sliderValue10 calculateQuoteOnChange" />
                             </div>
                         </div>
                         
@@ -277,21 +277,21 @@
                             <hr class="col-md-8 hr-color hr-danger mt-20 mb-20">
                             <div class="col-md-4 text-center">
                                 <label class="radio">
-                                    <input type="radio" id="jobQualityStandard" name="jobQuality" class="calculateQuoteOnChange" />
+                                    <input type="radio" id="jobQualityStandard" name="quotes[JobQuality]" class="calculateQuoteOnChange" />
                                     <i></i> Standard
                                 </label>
                             </div>
 
                             <div class="col-md-4 text-center">
                                 <label class="radio">
-                                    <input type="radio" id="jobQualityPremium" name="jobQuality" class="calculateQuoteOnChange" />
+                                    <input type="radio" id="jobQualityPremium" name="quotes[JobQuality]" class="calculateQuoteOnChange" />
                                     <i></i> Premium
                                 </label>
                             </div>
 
                             <div class="col-md-4 text-center">
                                 <label class="radio">
-                                    <input type="radio" id="jobQualityExcelium" name="jobQuality" class="calculateQuoteOnChange" />
+                                    <input type="radio" id="jobQualityExcelium" name="quotes[JobQuality]" class="calculateQuoteOnChange" />
                                     <i></i> Excelium
                                 </label>
                             </div>
@@ -301,26 +301,32 @@
                         <div class="row countToCSSOnly-lg text-center">
                             <div class="col-xl-3 col-md-6 col-sm-12">
                                 <span class="countToCSSOnly" id="totalNumberOfElevators" data-speed="3000" style="color:rgb(0, 0, 0)">0</span>
+                                <input  name="quotes[NumELevatorEstimated]" type="hidden" />
                                 <h4>Estimated Elevators</h4>
                             </div>
                         
                             <div class="col-xl-3 col-md-6 col-sm-12">
                                 <span class="countToCSSOnly" data-speed="3000" style="color:rgb(0, 0, 0)"><span id="subTotal">$0.00</span></span>
-                                <h4>Subtotal</h4>
+                                <input  name="quotes[SubTotal]" type="hidden" />
+                               <h4>Subtotal</h4>
                             </div>
                         
                             <div class="col-xl-3 col-md-6 col-sm-12">
                                 <span class="countToCSSOnly" data-speed="3000" style="color:rgb(0, 0, 0)"><span id="installationFees">$0.00</span></span>
+                                <input  name="quotes[InstallFee]" type="hidden" />
                                 <h4>Install Fees</h4>
                             </div>
                         
                             <div class="col-xl-3 col-md-6 col-sm-12">
                                 <span class="countToCSSOnly" data-speed="3000" style="color:rgb(0, 0, 0)"><span id="totalPrice">$0.00</span></span>
+                                <input  name="quotes[TotalPrice]" type="hidden" />
+
                                 <h4>Total Price</h4>
                             </div>
                             <input type="submit" style="display:none" />
                             
                         </div>
+
                         </form>
                         <div class="row">
                             <div class="col-md-12 pt-30">
@@ -345,9 +351,9 @@
                     -->
 
                     </div>
-
                     <div class="col-md-9 col-sm-9">
-                        <div class="tab-content tab-stacked nav-alternate">
+                        <form method="post" action="/quotes" id="formreceive">
+                         <div class="tab-content tab-stacked nav-alternate">
 
                         <!-- THE RESIDENTIAL FORM -->
                             <div id="tabResidential" class="tab-pane active">
@@ -405,7 +411,8 @@
                             </div>
 
                         </div>
-                    </div>
+                        </form>
+                     </div>
                 </div>
             </div>
         </section>

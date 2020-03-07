@@ -271,7 +271,6 @@ function calculateQuote() {
     errorValidation = [];
     var numberOfFloors = $("#numberOfFloors").val();
     var numberOfBasements = $("#numberOfBasements").val();
-    var jobQuality = $("input[name='jobQuality']:checked").val();
 
     // Making a switch to prevent the repetitive use of many if statements. Pushing the results of the calculations as a parameter in updateUIEstimatedResults().
     switch (currentTab) {
@@ -417,6 +416,11 @@ function updateUIEstimatedResults(elevators, subTotal, installationFees, totalPr
     $("#subTotal").html(roundPrice(subTotal));
     $("#installationFees").html(roundPrice(installationFees));
     $("#totalPrice").html(roundPrice(totalPrice));
+
+    $("#totalNumberOfElevators").parent().find("input[type='hidden']").val(Math.ceil((elevators) || 0));
+    $("#subTotal").parent().parent().find("input[type='hidden']").val(roundPrice(subTotal));
+    $("#installationFees").parent().parent().find("input[type='hidden']").val(roundPrice(installationFees));
+    $("#totalPrice").parent().parent().find("input[type='hidden']").val(roundPrice(totalPrice));
 
     $("#subTotal").formatCurrency();
     $("#installationFees").formatCurrency();
