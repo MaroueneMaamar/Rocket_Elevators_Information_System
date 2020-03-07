@@ -1,37 +1,98 @@
-<h1><%= t('.title', resource: resource_name.to_s.humanize) %></h1>
+<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= bootstrap_devise_error_messages! %>
+  <!-- TOP NAV -->
+  <header id="topNav">
+    <div class="container">
 
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-  </div>
+      <!-- Mobile Menu Button -->
+      <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
 
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
+      <!-- Logo -->
+      <%= link_to index_path, class: "logo float-left" do %><%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo")%><% end %>
+        
+      <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+        <nav class="nav-main">
 
-    <small class="form-text text-muted"><%= t('.leave_blank_if_you_don_t_want_to_change_it') %></small>
-  </div>
+          <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+            <!-- HOME -->
+              <li> <%= link_to 'HOME'.html_safe, index_path(anchor: "home") %> </li>
+            <!-- SERVICES -->
+              <li> <%= link_to 'SERVICES'.html_safe, index_path(anchor: "services") %> </li>
+            <!-- PORTFOLIO -->
+              <li class="nav-item dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#portfolio"> PORTFOLIO </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><%= link_to 'Overview'.html_safe, anchor: "portfolio" %></li>
+                  <li class="dropdown-item divider"></li>
+                  <li class="dropdown-item"><%= link_to 'Residential Projects'.html_safe, residential_path %></li>
+                  <li class="dropdown-item divider"></li>
+                  <li class="dropdown-item"><%= link_to 'Corporate Projects'.html_safe, corporate_path %></li>
+                </ul>
+              </li>
+            <!-- NEWS -->
+                <li> <%= link_to 'NEWS'.html_safe, index_path(anchor: "news") %> </li>
+            <!-- CLIENTS -->
+                <li> <%= link_to 'CLIENTS'.html_safe, index_path(anchor: "clients") %> </li>
+            <!-- SUBMISSION FORM -->
+                <li> <%= link_to 'SUBMISSION'.html_safe, submissionform_path %></li>
+            <!-- CONTACT -->
+                <li> <%= link_to 'CONTACT'.html_safe, index_path(anchor: "contact") %> </li>
+            <!-- CONNECT -->
+              <% if !current_user %>
+                <li><%= link_to "LOGIN", new_user_session_path %></li>
+                <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+              <% elsif current_user.admin %>
+                <li><%= link_to "ADMIN PANEL", rails_admin_path %> </li>
+                <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "PROFILE", edit_user_registration_path %></li>
+                <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
+              <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+</div>
 
-  <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'  %>
-  </div>
+<div class="container mb-50">
+  <h1 class="mb-10 mt-10"><%= t('.title', resource: resource_name.to_s.humanize) %></h1>
 
-  <div class="form-group">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= bootstrap_devise_error_messages! %>
 
-    <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
-  </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+    </div>
 
-  <div class="form-group">
-    <%= f.submit t('.update'), class: 'btn btn-primary' %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
 
-<p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
+      <small class="form-text text-muted"><%= t("Leave blank if you don't want to change it") %></small>
+    </div>
 
-<%= link_to t('.back'), :back %>
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :current_password %>
+      <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
+
+      <small class="form-text text-muted"><%= t('Please input your current password') %></small>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit t('.update'), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <p><%= t('Unsatisfied') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
+
+  <%= link_to t('Previous page'), :back %>
+</div>

@@ -6,89 +6,85 @@
 
       <!-- Mobile Menu Button -->
       <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-          <i class="fa fa-bars"></i>
+        <i class="fa fa-bars"></i>
       </button>
 
       <!-- Logo -->
-        <%= link_to index_path, class: "logo float-left" do %><%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo")%><% end %>
-
+      <%= link_to index_path, class: "logo float-left" do %><%= image_tag("logo.jpeg", alt: "Rocket Elevators Logo")%><% end %>
+        
       <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
         <nav class="nav-main">
 
           <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-          <!-- HOME -->
-              <li class="active"> <%= link_to 'HOME'.html_safe, index_path %> </li>
-          <!-- SERVICES -->
+            <!-- HOME -->
+              <li> <%= link_to 'HOME'.html_safe, index_path(anchor: "home") %> </li>
+            <!-- SERVICES -->
               <li> <%= link_to 'SERVICES'.html_safe, index_path(anchor: "services") %> </li>
-          <!-- PORTFOLIO -->
+            <!-- PORTFOLIO -->
               <li class="nav-item dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"> PORTFOLIO </a>
-                  <ul class="dropdown-menu">
-                      <li class="dropdown-item"><%= link_to 'Overview'.html_safe, index_path(anchor: "portfolio") %></li>
-                      <li class="dropdown-item divider"></li>
-                      <li class="dropdown-item"><%= link_to 'Residential Projects'.html_safe, residential_path %></li>
-                      <li class="dropdown-item divider"></li>
-                      <li class="dropdown-item"><%= link_to 'Corporate Projects'.html_safe, corporate_path %></li>
-                  </ul>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#portfolio"> PORTFOLIO </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><%= link_to 'Overview'.html_safe, anchor: "portfolio" %></li>
+                  <li class="dropdown-item divider"></li>
+                  <li class="dropdown-item"><%= link_to 'Residential Projects'.html_safe, residential_path %></li>
+                  <li class="dropdown-item divider"></li>
+                  <li class="dropdown-item"><%= link_to 'Corporate Projects'.html_safe, corporate_path %></li>
+                </ul>
               </li>
-          <!-- NEWS -->
-              <li> <%= link_to 'NEWS'.html_safe, index_path(anchor: "news") %> </li>
-          <!-- CLIENTS -->
-              <li> <%= link_to 'CLIENTS'.html_safe, index_path(anchor: "clients") %> </li>
-          <!-- SUBMISSION FORM -->
-              <li> <%= link_to 'SUBMISSION'.html_safe, anchor: "submission" %> </li>
-          <!-- CONTACT -->
-              <li> <%= link_to 'CONTACT'.html_safe, anchor: "contact" %> </li>
-          <!-- CONNECT -->
-              <li class="nav-item dropdown">
-                <% if !current_user %>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> CONNECT </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item"> <%= link_to('LOGIN', new_user_session_path) %> </li>
-                        <li class="dropdown-item"> <%= link_to('SIGN UP', new_user_registration_path) %> </li>
-                    </ul>
-                <% elsif current_user.admin %>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> ADMIN SECTION </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item"> <%= link_to('ADMIN SECTION' .html_safe, admin_root_path) %> </li>
-                        <li class="dropdown-item"> <%= link_to('LOGOUT', destroy_user_session_path, method: :delete) %> </li>
-                    </ul>
-                <% else %>
-                    <%= link_to('LOGOUT', destroy_user_session_path, method: :delete) %>
-                <% end %>
-              </li>
-              </ul>
-              </nav>
-          </div>
+            <!-- NEWS -->
+                <li> <%= link_to 'NEWS'.html_safe, index_path(anchor: "news") %> </li>
+            <!-- CLIENTS -->
+                <li> <%= link_to 'CLIENTS'.html_safe, index_path(anchor: "clients") %> </li>
+            <!-- SUBMISSION FORM -->
+                <li> <%= link_to 'SUBMISSION'.html_safe, submissionform_path %></li>
+            <!-- CONTACT -->
+                <li> <%= link_to 'CONTACT'.html_safe, index_path(anchor: "contact") %> </li>
+            <!-- CONNECT -->
+              <% if !current_user %>
+                <li><%= link_to "LOGIN", new_user_session_path %></li>
+                <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+              <% elsif current_user.admin %>
+                <li><%= link_to "ADMIN PANEL", rails_admin_path %> </li>
+                <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "PROFILE", edit_user_registration_path %></li>
+                <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
+              <% end %>
+          </ul>
+        </nav>
       </div>
+    </div>
   </header>
 </div>
-        
-<h1><%= t('.sign_in') %></h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-  </div>
+<div class="container">
 
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
-  </div>
+  <h1 class="mb-10 mt-10"><%= t('.sign_in') %></h1>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="form-group form-check">
-      <%= f.check_box :remember_me, class: 'form-check-input' %>
-      <%= f.label :remember_me, class: 'form-check-label' do %>
-        <%= resource.class.human_attribute_name('remember_me') %>
-      <% end %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group form-check">
+        <%= f.check_box :remember_me, class: 'form-check-input' %>
+        <%= f.label :remember_me, class: 'form-check-label' do %>
+          <%= resource.class.human_attribute_name('remember_me') %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.submit  t('.sign_in'), class: 'btn btn-primary' %>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.submit  t('.sign_in'), class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<%= render 'devise/shared/links' %>
+  <%= render 'devise/shared/links' %>
+</div>
