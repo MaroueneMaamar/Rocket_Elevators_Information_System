@@ -4,11 +4,8 @@ Rails.application.routes.draw do
   resources :quotes
   
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
-<<<<<<< HEAD
-=======
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
->>>>>>> alex
 
   post '/quotes' => "quotes#create"
   get '/index' => "pages#index"

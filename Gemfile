@@ -12,7 +12,6 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
-gem 'active_admin_flat_skin'
 gem 'yaml_db'
 gem 'devise-bootstrap-views', '~> 1.0'
 
