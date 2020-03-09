@@ -12,7 +12,7 @@ module Application
 
     config.load_defaults 5.2
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    # config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
+    config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
