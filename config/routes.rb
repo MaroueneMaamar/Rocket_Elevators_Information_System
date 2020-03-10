@@ -2,11 +2,14 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :quotes
+  resources :leads
   
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+  post '/index' => "leads#create"
+  get '/message' => "pages#message"
   post '/quotes' => "quotes#create"
   get '/index' => "pages#index"
   root 'pages#index'
