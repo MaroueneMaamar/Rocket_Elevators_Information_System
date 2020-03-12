@@ -3,40 +3,52 @@ task spec: ["dwh:db:test:prepare"]
 namespace :dwh do
 
   require 'pg'
-  
+
   task update: [:clear, :populate]
 
   task print: :environment do
-    # test = Quote.current_user.email
-    # test = User.find(@current_user) # shit asking for id
-    # test = User.current.username
-    # test = current_user.username
-    # current_user.name
-    puts test
-    # username = subject.current_user
-    # puts username
+  # Quote.all.each do |q|
+  #   puts "INSERT INTO factquotes (quoteid, creation, company, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', #{q.user.company}, #{q.user.email}, #{q.NumELevatorEstimated})"
+  # end 
 
-    # @request.email = current_user.email
-    # @request.save
+  Lead.all.each do |l| 
+    puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.user.company}', '#{l.user.email}', #{l.NumELevatorEstimated})"
+  end
+
+  puts "Finished inserting records"
+  end
+
+  task clearmysql: :environment do
+  mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
+  puts mysqldb.connection.current_database
+  mysqldb.connection.execute("TRUNCATE leads")
+  puts "Cleared table"
   end
 
   task clear: :environment do 
-      conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
-      puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
-
-      conn.exec("TRUNCATE TABLE factquotes RESTART IDENTITY;")
-      puts "Cleared table"
+    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
+    puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
+    conn.exec("TRUNCATE TABLE factquotes RESTART IDENTITY;")
+    puts "Cleared table"
   end
 
   task populate: :environment do
-      conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
-      puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
+    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
+    puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
 
-      Quote.all.each do |q|
-          puts "INSERT INTO factquotes (quoteid, nbelevator) VALUES (#{q.id}, #{q.NumELevatorEstimated}, '#{q.created_at}', #{q.user.email})"
-          # conn.exec("INSERT INTO factquotes (quoteid, nbelevator, creation, email) VALUES (#{q.id}, #{q.NumELevatorEstimated}, '#{q.created_at}', #{q.session[:session_id]})")
-      end 
-      puts "Finished inserting records"
+    # FACT QUOTES
+    Quote.all.each do |q|
+      puts "INSERT INTO factquotes (quoteid, creation, company, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', #{q.user.company}, #{q.user.email}, #{q.NumELevatorEstimated})"
+      conn.exec("INSERT INTO factquotes (quoteid, creation, companyname, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', '#{q.user.company}', '#{q.user.email}', #{q.NumELevatorEstimated})")
+    end 
+
+    # FACT CONTACT
+    Lead.all.each do |l|
+      puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.user.company}', '#{l.user.email}', #{l.NumELevatorEstimated})"
+      # conn.exec("INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.user.company}', '#{l.user.email}', #{l.projectname})")
+    end
+    
+    puts "Finished inserting records"
   end
 
   namespace :db do |ns|

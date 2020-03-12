@@ -112,9 +112,9 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
-    coffee-rails (4.2.2)
+    coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
+      railties (>= 5.2.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -335,7 +335,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara (>= 2.15)
   chromedriver-helper
-  coffee-rails (~> 4.2)
+  coffee-rails
   devise
   devise-bootstrap-views (~> 1.0)
   draper
@@ -363,4 +363,4 @@ RUBY VERSION
    ruby 2.7.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.1.2

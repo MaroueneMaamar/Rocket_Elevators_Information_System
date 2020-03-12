@@ -18,7 +18,7 @@ class QuotesController < ApplicationController
 
     def create
         p = params["quotes"].permit!
-        puts p
+        # pp p
         @quote = Quote.new(p)
 
         puts 'CURRENT USER'
