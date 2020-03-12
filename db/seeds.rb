@@ -5,16 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'nadya.fortier@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'martin.chantal@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'mathieu.houde@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'remi.gagnon@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'mathieu.lefrancois@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'serge.savoie@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'david.boutin@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
-User.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password', admin: true, role: "admin") if Rails.env.development?
+
+User.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(email: 'nadya.fortier@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+User.create!(email: 'martin.chantal@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+User.create!(email: 'mathieu.houde@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+User.create!(email: 'remi.gagnon@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(email: 'mathieu.lefrancois@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(email: 'serge.savoie@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(email: 'david.boutin@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
 
 300.times do
     Lead.create([{
