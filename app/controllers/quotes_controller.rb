@@ -9,5 +9,6 @@ class QuotesController < ApplicationController
         puts p
         @quote = Quote.new(p)
         @quote.save!
+        redirect_to quotesconfirm_path
     end
 end

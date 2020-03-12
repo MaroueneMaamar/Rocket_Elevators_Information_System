@@ -14,6 +14,7 @@ gem 'draper'
 gem 'pundit'
 gem 'yaml_db'
 gem 'devise-bootstrap-views', '~> 1.0'
+gem 'activestorage-database-service', github: 'TitovDigital/activestorage-database-service'
 
 gem 'capistrano', '~> 3.10', require: false
 gem 'capistrano-rails', '~> 1.4', require: false
