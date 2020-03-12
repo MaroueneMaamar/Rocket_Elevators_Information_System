@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post '/index' => "leads#create"
   get '/message' => "pages#message"
   post '/quotes' => "quotes#create"
-  get '/index' => "pages#index"
+  get '/quotesconfirm' => "pages#quotesconfirm"
   root 'pages#index'
   get '/residential' => "pages#residential"
   get '/corporate' => "pages#corporate"

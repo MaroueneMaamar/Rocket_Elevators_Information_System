@@ -1,12 +1,8 @@
 RailsAdmin.config do |config|
     
-    config.authorize_with do
-      redirect_to main_app.root_path unless warden.user.admin == true
-    end
-
-    config.authorize_with do
-      redirect_to main_app.root_path unless warden.user.superadmin == true
-    end
+  config.authorize_with do
+    redirect_to main_app.root_path unless warden.user.superadmin == true || warden.user.admin == true
+  end
 
   ### Popular gems integration
 
@@ -46,4 +42,9 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+end
+
+RailsAdmin.config do |config|
+  # or something more dynamic
+  config.main_app_name = Proc.new { |controller| [ "Rocket Elevators", " BackOffice - #{controller.params[:action].try(:titleize)}" ] }
 end

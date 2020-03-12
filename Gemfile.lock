@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/TitovDigital/activestorage-database-service.git
+  revision: f04c537f6a6c2cafe90d37845bce7310d2ed5bf0
+  specs:
+    activestorage-database-service (1.0.0)
+      rails (>= 5.2.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -301,6 +308,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activestorage-database-service!
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.4.1)
   byebug
