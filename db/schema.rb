@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_142814) do
+ActiveRecord::Schema.define(version: 2020_03_12_134641) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 2020_03_11_142814) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "NumAppartment", default: 0, null: false
     t.integer "NumFLoors", default: 0, null: false
@@ -82,6 +88,8 @@ ActiveRecord::Schema.define(version: 2020_03_11_142814) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "JobQuality"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -103,4 +111,5 @@ ActiveRecord::Schema.define(version: 2020_03_11_142814) do
   end
 
   add_foreign_key "posts", "users"
+  add_foreign_key "quotes", "users"
 end

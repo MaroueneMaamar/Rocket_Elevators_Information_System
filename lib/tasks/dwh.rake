@@ -6,6 +6,20 @@ namespace :dwh do
   
   task update: [:clear, :populate]
 
+  task print: :environment do
+    # test = Quote.current_user.email
+    # test = User.find(@current_user) # shit asking for id
+    # test = User.current.username
+    # test = current_user.username
+    # current_user.name
+    puts test
+    # username = subject.current_user
+    # puts username
+
+    # @request.email = current_user.email
+    # @request.save
+  end
+
   task clear: :environment do 
       conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
       puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
@@ -19,8 +33,8 @@ namespace :dwh do
       puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
 
       Quote.all.each do |q|
-          puts "INSERT INTO factquotes (quoteid, nbelevator) VALUES (#{q.id}, #{q.NumELevatorEstimated})"
-          conn.exec("INSERT INTO factquotes (quoteid, nbelevator) VALUES (#{q.id}, #{q.NumELevatorEstimated})")
+          puts "INSERT INTO factquotes (quoteid, nbelevator) VALUES (#{q.id}, #{q.NumELevatorEstimated}, '#{q.created_at}', #{q.user.email})"
+          # conn.exec("INSERT INTO factquotes (quoteid, nbelevator, creation, email) VALUES (#{q.id}, #{q.NumELevatorEstimated}, '#{q.created_at}', #{q.session[:session_id]})")
       end 
       puts "Finished inserting records"
   end

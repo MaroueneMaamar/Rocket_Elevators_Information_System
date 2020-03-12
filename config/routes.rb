@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :products
+  resources :quotes
   # resources :posts
   # resources :quotes
 
-  authenticate :user do
-    resources :posts, :quotes, only: [:new, :create, :edit, :update, :destroy]
-  end
+  # authenticate :user do
+  # end
+
+  # authenticate :user do
+  #   resources :posts, :quotes, only: [:new, :create, :edit, :update, :destroy]
+  # end
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout' }
   
@@ -17,7 +22,7 @@ Rails.application.routes.draw do
   get '/index' => "pages#index"
   get '/residential' => "pages#residential"
   get '/corporate' => "pages#corporate"
-  get '/submissionform' => "pages#submissionform"
+  get '/submissionform' => "quotes#submissionform"
   get '/privacy' => "pages#privacy"
   get '/404' => "pages#404"
   get '/tos'  => "pages#tos"
