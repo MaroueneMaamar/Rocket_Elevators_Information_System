@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_235524) do
+ActiveRecord::Schema.define(version: 2020_03_12_134641) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -214,6 +214,12 @@ ActiveRecord::Schema.define(version: 2020_03_11_235524) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "NumAppartment", default: 0, null: false
     t.integer "NumFLoors", default: 0, null: false
@@ -222,7 +228,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_235524) do
     t.integer "NumBusiness", default: 0, null: false
     t.integer "NumElevatorsDesired", default: 0, null: false
     t.integer "NumOccupantsPerFloor", default: 0, null: false
-    t.integer "NumELevatorEstimated"
+    t.integer "NumELevatorEstimated", null: false
     t.float "InstallFee"
     t.float "SubTotal"
     t.float "TotalPrice"
@@ -246,7 +252,12 @@ ActiveRecord::Schema.define(version: 2020_03_11_235524) do
     t.boolean "superadmin", default: false, null: false
     t.boolean "employee", default: false, null: false
     t.boolean "customer", default: false, null: false
+    t.string "username"
+    t.string "company"
+    t.index ["company"], name: "index_users_on_company", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

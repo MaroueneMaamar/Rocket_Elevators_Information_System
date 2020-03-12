@@ -337,7 +337,6 @@ DEPENDENCIES
   popper_js
   puma (~> 3.11)
   pundit
-  rails (~> 5.2.4, >= 5.2.4.1)
   rails_admin (~> 2.0)
   rails_admin_authorized_fields
   rvm1-capistrano3

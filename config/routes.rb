@@ -1,21 +1,25 @@
 Rails.application.routes.draw do
 
-  resources :posts
+  resources :products
   resources :quotes
   resources :leads
-  
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
-  
+
+  # authenticate :user do
+  #   resources :posts, :quotes, only: [:new, :create, :edit, :update, :destroy]
+  # end
+
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout' }
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  post '/index' => "leads#create"
-  get '/message' => "pages#message"
-  post '/quotes' => "quotes#create"
-  get '/quotesconfirm' => "pages#quotesconfirm"
   root 'pages#index'
+  post '/index' => "leads#create"
+  post '/quotes' => "quotes#create"
+  get '/message' => "pages#message"
+  get '/quotesconfirm' => "pages#quotesconfirm"
+  get '/index' => "pages#index"
   get '/residential' => "pages#residential"
   get '/corporate' => "pages#corporate"
-  get '/submissionform' => "pages#submissionform"
+  get '/submissionform' => "quotes#submissionform"
   get '/privacy' => "pages#privacy"
   get '/404' => "pages#404"
   get '/tos'  => "pages#tos"

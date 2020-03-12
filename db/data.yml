@@ -23,8 +23,8 @@ admin_users:
   - updated_at
   records: 
   - - 1
-    - admin@example.com
-    - "$2a$11$OnG9SmkRS.hFSM08PMScqOlQQoDmw4HLv4BFDyj12t19DHigUuLeK"
+    - test@test.com
+    - "$2a$11$mmw0.7z8TGQc0b7gW9y39eLt/Co2vKE8RK5F6qgTI9KjVTKppUlEm"
     - ''
     - ''
     - 
@@ -39,8 +39,8 @@ admin_users:
     - 
     - 
     - 
-    - 2020-03-06 00:46:43.000000000 Z
-    - 2020-03-06 00:46:43.000000000 Z
+    - 2020-03-07 04:19:11.000000000 Z
+    - 2020-03-07 04:19:11.000000000 Z
 
 ---
 ar_internal_metadata:
@@ -52,8 +52,88 @@ ar_internal_metadata:
   records: 
   - - environment
     - development
-    - 2020-03-05 17:29:00.000000000 Z
-    - 2020-03-05 17:29:00.000000000 Z
+    - 2020-03-07 03:58:53.000000000 Z
+    - 2020-03-07 03:58:53.000000000 Z
+
+---
+quotes:
+  columns:
+  - id
+  - NumAppartment
+  - NumFLoors
+  - NumBasement
+  - NumParking
+  - NumBusiness
+  - NumElevatorsDesired
+  - NumOccupantsPerFloor
+  - NumELevatorEstimated
+  - InstallFee
+  - SubTotal
+  - TotalPrice
+  - created_at
+  - updated_at
+  - JobQuality
+  records: 
+  - - 1
+    - 110
+    - 12
+    - 17
+    - 0
+    - 0
+    - 0
+    - 0
+    - 2
+    - 3209.7
+    - 24690.0
+    - 27899.7
+    - 2020-03-07 03:59:28.000000000 Z
+    - 2020-03-07 03:59:28.000000000 Z
+    - 1
+  - - 2
+    - 168
+    - 8
+    - 6
+    - 0
+    - 0
+    - 0
+    - 0
+    - 4
+    - 9856.0
+    - 61600.0
+    - 71456.0
+    - 2020-03-07 04:00:10.000000000 Z
+    - 2020-03-07 04:00:10.000000000 Z
+    - 2
+  - - 3
+    - 80
+    - 35
+    - 7
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
+    - 756.5
+    - 7565.0
+    - 8321.5
+    - 2020-03-07 04:02:00.000000000 Z
+    - 2020-03-07 04:02:00.000000000 Z
+    - 0
+  - - 4
+    - 94
+    - 13
+    - 11
+    - 0
+    - 0
+    - 0
+    - 0
+    - 2
+    - 4928.0
+    - 30800.0
+    - 35728.0
+    - 2020-03-07 04:20:03.000000000 Z
+    - 2020-03-07 04:20:03.000000000 Z
+    - 2
 
 ---
 users:
@@ -67,40 +147,25 @@ users:
   - created_at
   - updated_at
   - admin
+  - superadmin
   records: 
   - - 1
-    - test@test.com
-    - "$2a$11$MYc.412SFdwd0FkgdNu0TOeyHQT1Wn9cY1zWM0plhc4zEwHJPNH3y"
+    - default@example.com
+    - "$2a$11$DbKSsz8EAHxX/Sti2vE7Y.WLdI4qBu.G7F4V8fSFi/mbS77Mj0wiO"
     - 
     - 
     - 
-    - 2020-03-06 02:37:08.000000000 Z
-    - 2020-03-06 02:37:08.000000000 Z
+    - 2020-03-07 03:57:55.000000000 Z
+    - 2020-03-07 04:30:44.000000000 Z
     - false
+    - true
   - - 2
     - test2@test.com
-    - "$2a$11$jvhTFyWW/cIsISCDUZhnJ.MNlf3vUGjgSFwhxizpzGt2V96qQq06y"
+    - "$2a$11$vT3DxNSRtW5Q1wX58fHJJOkEqdIjYYzwTLmfzqJLIAm6LFVX0m73O"
     - 
     - 
     - 
-    - 2020-03-06 03:41:14.000000000 Z
-    - 2020-03-06 03:41:14.000000000 Z
-    - false
-  - - 3
-    - isael@test.com
-    - "$2a$11$VAsQb6WJV.8dZMEO82cJsOEdMPDHc4mMXkDkMnTol7lgF5Xk3muy6"
-    - 
-    - 
-    - 
-    - 2020-03-06 03:54:18.000000000 Z
-    - 2020-03-06 03:54:18.000000000 Z
-    - false
-  - - 4
-    - usertest3@test.com
-    - "$2a$11$//ZS.XJi13rAOmMCS3HOMOALbF9GP18TbweMl2nWzm3fVaAqDbckC"
-    - 
-    - 
-    - 
-    - 2020-03-06 04:21:33.000000000 Z
-    - 2020-03-06 04:21:33.000000000 Z
-    - false
+    - 2020-03-07 04:21:27.000000000 Z
+    - 2020-03-07 04:22:07.000000000 Z
+    - true
+    - true
