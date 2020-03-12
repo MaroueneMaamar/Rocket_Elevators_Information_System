@@ -254,6 +254,8 @@ ActiveRecord::Schema.define(version: 2020_03_12_134641) do
     t.boolean "customer", default: false, null: false
     t.string "username"
     t.string "company"
+    t.boolean "employee", default: false, null: false
+    t.boolean "customer", default: false, null: false
     t.index ["company"], name: "index_users_on_company", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
