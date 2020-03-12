@@ -3,7 +3,6 @@ RailsAdmin.config do |config|
   # config.authorize_with do
   #   redirect_to main_app.root_path unless warden.user.superadmin == true || warden.user.admin == true
   # end
-
   ### Popular gems integration
 
   ## == Devise ==
@@ -26,7 +25,8 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
-
+ 
+  
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -42,4 +42,9 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+end
+
+RailsAdmin.config do |config|
+  # or something more dynamic
+  config.main_app_name = Proc.new { |controller| [ "Rocket Elevators", " BackOffice - #{controller.params[:action].try(:titleize)}" ] }
 end
