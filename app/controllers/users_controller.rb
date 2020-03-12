@@ -3,3 +3,4 @@ class UsersController < ApplicationController
         params.require(:user).permit(:email, :password, :password_confirmation, :remember_me)
     end
 end
+

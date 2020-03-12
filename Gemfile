@@ -20,6 +20,10 @@ gem 'capistrano-rails', '~> 1.4', require: false
 gem 'capistrano-bundler', '>= 1.1.0'
 gem 'rvm1-capistrano3', require: false
 gem 'capistrano3-puma'
+gem "pg"
+gem "faker"
+
+#gem 'rails_admin_authorized_fields'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'

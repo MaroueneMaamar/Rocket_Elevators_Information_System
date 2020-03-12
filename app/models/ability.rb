@@ -8,7 +8,7 @@ class Ability
 
     # Define User abilities
     if user.is? :admin
-      can :manage, Quotes , 
+      can :manage, Quotes 
     else
       can :read, Quotes
     end
