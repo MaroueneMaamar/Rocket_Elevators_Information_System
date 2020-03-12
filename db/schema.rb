@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_203518) do
+ActiveRecord::Schema.define(version: 2020_03_11_235524) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -78,6 +78,107 @@ ActiveRecord::Schema.define(version: 2020_03_11_203518) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type_adress", default: "", null: false
+    t.string "status", default: "", null: false
+    t.string "entity", default: "", null: false
+    t.string "num_street", default: "", null: false
+    t.string "suite", default: ""
+    t.string "city", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "country", default: "", null: false
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type"
+    t.string "status"
+    t.datetime "commissioning_date"
+    t.datetime "last_inspection_date"
+    t.string "certificate_operations"
+    t.text "information"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "employee_id"
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_batteries_on_building_id"
+    t.index ["employee_id"], name: "index_batteries_on_employee_id"
+  end
+
+  create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_building_details_on_building_id"
+  end
+
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "building_name", default: "", null: false
+    t.string "building_admin_name", default: "", null: false
+    t.string "building_admin_email"
+    t.string "building_admin_phone", default: "", null: false
+    t.string "technical_contact_fullname", default: "", null: false
+    t.string "technical_contact_email"
+    t.string "technical_contact_phone", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "customer_id"
+    t.bigint "adress_id"
+    t.index ["adress_id"], name: "index_buildings_on_adress_id"
+    t.index ["customer_id"], name: "index_buildings_on_customer_id"
+  end
+
+  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type"
+    t.integer "number_floors"
+    t.string "status"
+    t.text "information"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "battery_id"
+    t.index ["battery_id"], name: "index_columns_on_battery_id"
+  end
+
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "creation_date"
+    t.string "company_name", default: "", null: false
+    t.string "contact_fullname", default: "", null: false
+    t.string "contact_phone", default: "", null: false
+    t.string "company_email", default: "", null: false
+    t.string "company_description"
+    t.string "service_technical_authority_fullname", default: "", null: false
+    t.string "service_technical_authority_phone", default: "", null: false
+    t.string "technical_manager_email", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "adress_id"
+    t.index ["adress_id"], name: "index_customers_on_adress_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "serial_number"
+    t.string "model"
+    t.string "type_elevator"
+    t.string "status"
+    t.datetime "commissioning_date"
+    t.datetime "inspection_date"
+    t.string "certificate_inspection"
+    t.text "information"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_elevators_on_column_id"
+  end
+
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "firstName", default: "", null: false
@@ -85,6 +186,8 @@ ActiveRecord::Schema.define(version: 2020_03_11_203518) do
     t.string "email", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -126,6 +229,8 @@ ActiveRecord::Schema.define(version: 2020_03_11_203518) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "JobQuality"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -139,9 +244,22 @@ ActiveRecord::Schema.define(version: 2020_03_11_203518) do
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
     t.boolean "superadmin", default: false, null: false
+    t.boolean "employee", default: false, null: false
+    t.boolean "customer", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "batteries", "buildings"
+  add_foreign_key "batteries", "employees"
+  add_foreign_key "building_details", "buildings"
+  add_foreign_key "buildings", "adresses"
+  add_foreign_key "buildings", "customers"
+  add_foreign_key "columns", "batteries"
+  add_foreign_key "customers", "adresses"
+  add_foreign_key "customers", "users"
+  add_foreign_key "elevators", "columns"
+  add_foreign_key "employees", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "quotes", "users"
 end
