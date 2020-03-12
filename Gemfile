@@ -12,7 +12,6 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
-gem 'yaml_db'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'activestorage-database-service', github: 'TitovDigital/activestorage-database-service'
 
@@ -26,8 +25,6 @@ gem "faker"
 
 #gem 'rails_admin_authorized_fields'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'pg'
 # gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
