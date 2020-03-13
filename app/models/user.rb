@@ -3,8 +3,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :quotes
+  has_many :posts
   has_many :leads
-  has_many :buildings
+  has_many :employees
+  has_many :customers
+  # has_many :buildings
   # has_many :building_details
 
   belongs_to :role
