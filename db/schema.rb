@@ -252,12 +252,9 @@ ActiveRecord::Schema.define(version: 2020_03_12_170503) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
-    t.boolean "superadmin", default: false, null: false
+    t.bigint "role_id"
     t.boolean "employee", default: false, null: false
     t.boolean "customer", default: false, null: false
-    t.string "role"
-    t.bigint "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
