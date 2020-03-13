@@ -1,3 +1,3 @@
 class BuildingDetail < ApplicationRecord
-    belongs_to :user, optional: true
+    belongs_to :building  
 end

@@ -10,6 +10,8 @@ gem 'devise'
 # gem 'font_awesome5_rails'
 gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
+gem 'rolify'
+
 gem 'draper'
 gem 'pundit'
 gem 'devise-bootstrap-views', '~> 1.0'
