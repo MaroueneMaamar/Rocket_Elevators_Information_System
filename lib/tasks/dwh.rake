@@ -32,15 +32,31 @@ namespace :dwh do
   #   end
   # end
 
+  Elevator.all.each do |e|
 
+    puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{e.column.battery.building.id}', '#{"customer_id"}', '#{"a.city"}')"
+    #conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
+    
 
-  Customer.all.each do |c|
-    Elevator.all.each do |e|
-      Adress.all.each do |a|
-        puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', #{e.id}, '#{a.city}')"
-      end
-    end
   end
+
+
+  # Elevator.all.each do |e|
+  #   Building.all.each do |i| 
+  #     Adress.all.each do |a|
+  #       puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
+  #       conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
+  #     end
+  #   end
+  # end
+
+  # Customer.all.each do |c|
+  #   Elevator.all.each do |e|
+  #     Adress.all.each do |a|
+  #       puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', #{e.id}, '#{a.city}')"
+  #     end
+  #   end
+  # end
 
   # Adress.all.each do |a|
   #   puts "INSERT INTO factelevator (buildingcity) VALUES ('#{a.city}')"
@@ -84,14 +100,14 @@ namespace :dwh do
     # end
 
     # FACT ELEVATOR
-      # Elevator.all.each do |e|
-      #   Building.all.each do |i| 
-      #     Adress.all.each do |a|
-      #       puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
-      #       conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
-      #     end
-      #   end
-      # end
+      Elevator.all.each do |e|
+        Building.all.each do |i| 
+          Adress.all.each do |a|
+            puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
+            conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
+          end
+        end
+      end
 
 
     # DIMENSION CUSTOMERS
