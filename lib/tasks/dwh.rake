@@ -23,11 +23,21 @@ namespace :dwh do
   #   puts "INSERT INTO factelevator (buildingid) VALUES ('#{b.id}')"
   # end
 
-  Elevator.all.each do |e|
-    Building.all.each do |i| 
+  # Elevator.all.each do |e|
+  #   Building.all.each do |i| 
+  #     Adress.all.each do |a|
+  #       puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
+  #       # conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}')")
+  #     end
+  #   end
+  # end
+
+
+
+  Customer.all.each do |c|
+    Elevator.all.each do |e|
       Adress.all.each do |a|
-        puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
-        # conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}')")
+        puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', #{e.id}, '#{a.city}')"
       end
     end
   end
@@ -74,14 +84,26 @@ namespace :dwh do
     # end
 
     # FACT ELEVATOR
-      Elevator.all.each do |e|
-        Building.all.each do |i| 
+      # Elevator.all.each do |e|
+      #   Building.all.each do |i| 
+      #     Adress.all.each do |a|
+      #       puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
+      #       conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
+      #     end
+      #   end
+      # end
+
+
+    # DIMENSION CUSTOMERS
+      Customer.all.each do |c|
+        Quote.all.each do |q|
           Adress.all.each do |a|
-            puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
-            conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
+            puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', #{q.NumELevatorEstimated}, '#{a.city}')"
+            conn.exec("INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', #{q.NumELevatorEstimated}, '#{a.city}')")
           end
         end
       end
+    
     
     puts "Finished inserting records"
   end

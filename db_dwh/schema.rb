@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_002133) do
+ActiveRecord::Schema.define(version: 2020_03_13_004207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dimcustomers", force: :cascade do |t|
+    t.datetime "creationdate"
+    t.string "companyname", default: "", null: false
+    t.string "companycontactfullname", default: "", null: false
+    t.string "companycontactemail", default: "", null: false
+    t.integer "nbelevators", default: 0, null: false
+    t.string "customercity", default: "", null: false
+  end
 
   create_table "factcontact", force: :cascade do |t|
     t.integer "contactid", default: 0, null: false
