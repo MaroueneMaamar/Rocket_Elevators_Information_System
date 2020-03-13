@@ -11,24 +11,49 @@ namespace :dwh do
   #   puts "INSERT INTO factquotes (quoteid, creation, company, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', #{q.user.company}, #{q.user.email}, #{q.NumELevatorEstimated})"
   # end 
 
-  Lead.all.each do |l| 
-    puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.user.company}', '#{l.user.email}', #{l.NumELevatorEstimated})"
+  # Lead.all.each do |l| 
+  #   puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.businessname}', '#{l.email}', #{l.projectname})"
+  # end
+
+  # Elevator.all.each do |e|
+  #   puts "INSERT INTO factelevator (serialnumber, commissioningdate) VALUES (#{e.serial_number}, '#{e.commissioning_date}')"
+  # end
+
+  # Building.all.each do |b|
+  #   puts "INSERT INTO factelevator (buildingid) VALUES ('#{b.id}')"
+  # end
+
+  Elevator.all.each do |e|
+    Building.all.each do |i| 
+      Adress.all.each do |a|
+        puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
+        # conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}')")
+      end
+    end
   end
+
+  # Adress.all.each do |a|
+  #   puts "INSERT INTO factelevator (buildingcity) VALUES ('#{a.city}')"
+  # end
+
+  # Building.all.each do |i|
+  #   puts "INSERT INTO factelevator (customerid) VALUES ('#{i.customer_id}')"
+  # end
 
   puts "Finished inserting records"
   end
 
   task clearmysql: :environment do
-  mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
-  puts mysqldb.connection.current_database
-  mysqldb.connection.execute("TRUNCATE leads")
-  puts "Cleared table"
+    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
+    puts mysqldb.connection.current_database
+    mysqldb.connection.execute("TRUNCATE leads")
+    puts "Cleared table"
   end
 
   task clear: :environment do 
     conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
     puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
-    conn.exec("TRUNCATE TABLE factquotes RESTART IDENTITY;")
+    conn.exec("TRUNCATE TABLE factelevator RESTART IDENTITY;")
     puts "Cleared table"
   end
 
@@ -37,19 +62,32 @@ namespace :dwh do
     puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
 
     # FACT QUOTES
-    Quote.all.each do |q|
-      puts "INSERT INTO factquotes (quoteid, creation, company, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', #{q.user.company}, #{q.user.email}, #{q.NumELevatorEstimated})"
-      conn.exec("INSERT INTO factquotes (quoteid, creation, companyname, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', '#{q.user.company}', '#{q.user.email}', #{q.NumELevatorEstimated})")
-    end 
+    # Quote.all.each do |q|
+    #   puts "INSERT INTO factquotes (quoteid, creation, company, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', #{q.user.company}, #{q.user.email}, #{q.NumELevatorEstimated})"
+    #   conn.exec("INSERT INTO factquotes (quoteid, creation, companyname, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', '#{q.user.company}', '#{q.user.email}', #{q.NumELevatorEstimated})")
+    # end 
 
     # FACT CONTACT
-    Lead.all.each do |l|
-      puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.user.company}', '#{l.user.email}', #{l.NumELevatorEstimated})"
-      # conn.exec("INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.user.company}', '#{l.user.email}', #{l.projectname})")
-    end
+    # Lead.all.each do |l|
+    #   puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.businessname}', '#{l.email}', #{l.projectname})"
+    #   conn.exec("INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.businessname}', '#{l.email}', '#{l.projectname}')")
+    # end
+
+    # FACT ELEVATOR
+      Elevator.all.each do |e|
+        Building.all.each do |i| 
+          Adress.all.each do |a|
+            puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
+            conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
+          end
+        end
+      end
     
     puts "Finished inserting records"
   end
+
+########################################################################################################################
+########################################################################################################################
 
   namespace :db do |ns|
 

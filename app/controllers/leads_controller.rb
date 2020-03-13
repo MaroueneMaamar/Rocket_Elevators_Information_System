@@ -5,9 +5,15 @@ class LeadsController < ApplicationController
 
     def create
         p = params["leads"].permit!
-        puts p
+        # puts p
         @lead = Lead.new(p)
+
+        puts 'CURRENT USER'
+        pp current_user
+
+        @lead.user = current_user
         @lead.save!
+        
         redirect_to message_path
     end
 end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :quotes
   resources :leads
+  # resources :building_details
 
   # authenticate :user do
   #   resources :posts, :quotes, only: [:new, :create, :edit, :update, :destroy]
