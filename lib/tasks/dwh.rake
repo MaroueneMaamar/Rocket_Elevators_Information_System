@@ -72,7 +72,13 @@ namespace :dwh do
   task clearmysql: :environment do
     mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
     puts mysqldb.connection.current_database
+    # mysqldb.connection.execute("TRUNCATE users")
+    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
+    mysqldb.connection.execute("TRUNCATE roles")
+    mysqldb.connection.execute("TRUNCATE users")
+    mysqldb.connection.execute("TRUNCATE users_roles")
     mysqldb.connection.execute("TRUNCATE leads")
+    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
     puts "Cleared table"
   end
 

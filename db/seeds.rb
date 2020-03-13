@@ -12,28 +12,28 @@ Role.create!(id: 2, name: 'customer')if Rails.env.development?
 Role.create!(id: 3, name: 'employee')if Rails.env.development?
 
 
-User.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-User.create!(email: 'nadya.fortier@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
-User.create!(email: 'martin.chantal@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
-User.create!(email: 'mathieu.houde@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
-User.create!(email: 'remi.gagnon@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-User.create!(email: 'mathieu.lefrancois@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-User.create!(email: 'serge.savoie@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-User.create!(email: 'david.boutin@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-User.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-User.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(username: 'Nicolasgenest', email: 'nicolas.genest@codeboxx.biz', company: 'Codeboxx1', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(username: 'Nadyafortier', email: 'nadya.fortier@codeboxx.biz', company: 'Codeboxx2', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+User.create!(username: 'Martinchantal', email: 'martin.chantal@codeboxx.biz', company: 'Codeboxx3', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+User.create!(username: 'Mathieuhoude', email: 'mathieu.houde@codeboxx.biz', company: 'Codeboxx4', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+User.create!(username: 'Remigagnon', email: 'remi.gagnon@codeboxx.biz', company: 'Codeboxx5', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(username: 'Mathieulefrancois', email: 'mathieu.lefrancois@codeboxx.biz', company: 'Codeboxx6', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(username: 'Sergesavoie', email: 'serge.savoie@codeboxx.biz', company: 'Codeboxx7', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(username: 'Davidboutin', email: 'david.boutin@codeboxx.biz', company: 'Codeboxx8', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(username: 'Mathieulortie', email: 'mathieu.lortie@codeboxx.biz', company: 'Codeboxx9', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+User.create!(username: 'Thomascarrier', email: 'thomas.carrier@codeboxx.biz', company: 'Codeboxx10', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
 
-300.times do
-    Lead.create([{
-        name: Faker::Name.name,
-        businessname: Faker::Company.name,
-        email: Faker::Internet.email,
-        phone: Faker::PhoneNumber.phone_number,
-        projectname: Faker::FunnyName.name,
-        description: Faker::IndustrySegments.industry,
-        department: "Elevators",
-        message: Faker::Books::Lovecraft.paragraph,
-        attachment: Faker::File.extension,
-        date: Faker::Date.between(from: 5000.days.ago, to: Date.today),
-    }])
-end
+# 300.times do
+#     Lead.create([{
+#         name: Faker::Name.name,
+#         businessname: Faker::Company.name,
+#         email: Faker::Internet.email,
+#         phone: Faker::PhoneNumber.phone_number,
+#         projectname: Faker::FunnyName.name,
+#         description: Faker::IndustrySegments.industry,
+#         department: "Elevators",
+#         message: Faker::Books::Lovecraft.paragraph,
+#         attachment: Faker::File.extension,
+#         date: Faker::Date.between(from: 5000.days.ago, to: Date.today),
+#     }])
+# end
