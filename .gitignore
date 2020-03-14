@@ -14,3 +14,4 @@
 /log/development.log
 /node_modules
 yarn.lock
+/config/blazer.yml

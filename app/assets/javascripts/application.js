@@ -18,6 +18,4 @@
 //= require popper
 //= require bootstrap
 //= require bootstrap.min
-//= require chartkick
-//= require Chart.bundle
 //= require_tree .
