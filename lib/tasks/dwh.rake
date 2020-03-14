@@ -140,6 +140,10 @@ namespace :dwh do
     mysqldb.connection.execute("TRUNCATE elevators")
     mysqldb.connection.execute("TRUNCATE leads")
     mysqldb.connection.execute("TRUNCATE quotes")
+    mysqldb.connection.execute("TRUNCATE users")
+    mysqldb.connection.execute("TRUNCATE roles")
+    mysqldb.connection.execute("TRUNCATE users_roles")
+    mysqldb.connection.execute("TRUNCATE employees")
     mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
     puts "Cleared table"
   end
