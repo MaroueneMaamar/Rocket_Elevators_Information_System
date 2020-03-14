@@ -37,14 +37,15 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    #excluded_models = ['audits', 'checks', 'dashboards', 'dashboard_queries', 'queries']
 
     ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+    #  history_index
+    #  history_show
   end
 end
 
 RailsAdmin.config do |config|
   # or something more dynamic
-  config.main_app_name = Proc.new { |controller| [ "Rocket Elevators", " BackOffice - #{controller.params[:action].try(:titleize)}" ] }
+  config.main_app_name = Proc.new { |controller| [ "Rocket Elevators", " Pannel - #{controller.params[:action].try(:titleize)}" ] }
 end
