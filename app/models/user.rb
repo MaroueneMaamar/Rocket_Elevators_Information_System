@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :employees
   has_many :customers
   has_many :buildings
-  has_many :building_details
 
   belongs_to :role
   rolify
