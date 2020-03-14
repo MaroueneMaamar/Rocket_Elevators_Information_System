@@ -37,7 +37,7 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-    #excluded_models = ['audits', 'checks', 'dashboards', 'dashboard_queries', 'queries']
+   
 
     ## With an audit adapter, you can add:
     #  history_index
