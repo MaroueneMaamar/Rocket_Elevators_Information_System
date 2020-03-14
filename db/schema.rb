@@ -262,6 +262,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_173337) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_leads_on_user_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -312,13 +314,12 @@ ActiveRecord::Schema.define(version: 2020_03_13_173337) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.string "name"
-    t.datetime "remember_created_at"
-    t.datetime "reset_password_sent_at"
-    t.string "reset_password_token"
     t.boolean "superadmin", default: false, null: false
     t.string "username"
     t.string "company"
@@ -328,6 +329,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_173337) do
     t.bigint "role_id"
     t.index ["company"], name: "index_users_on_company", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
@@ -344,7 +346,6 @@ ActiveRecord::Schema.define(version: 2020_03_13_173337) do
   add_foreign_key "batteries", "buildings"
   add_foreign_key "batteries", "employees"
   add_foreign_key "building_details", "buildings"
-  add_foreign_key "building_details", "users"
   add_foreign_key "buildings", "adresses"
   add_foreign_key "buildings", "customers"
   add_foreign_key "buildings", "users"
