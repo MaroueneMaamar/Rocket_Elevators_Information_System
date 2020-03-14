@@ -11,8 +11,8 @@ class User < ApplicationRecord
       self.add_role(:employee) if self.roles.blank?
     else
       self.add_role(:customer) if self.roles.blank?
+    end
   end
-end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
