@@ -4,7 +4,6 @@ class User < ApplicationRecord
 
   has_many :quotes
   has_many :posts
-  has_many :leads
   has_many :employees
   has_many :customers
   has_many :buildings
