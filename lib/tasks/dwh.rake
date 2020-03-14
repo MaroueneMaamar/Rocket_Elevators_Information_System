@@ -7,127 +7,7 @@ namespace :dwh do
   task update: [:clear, :populate]
 
   task print: :environment do
-  # Quote.all.each do |q|
-  #   puts "INSERT INTO factquotes (quoteid, creation, company, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', #{q.user.company}, #{q.user.email}, #{q.NumELevatorEstimated})"
-  # end 
-
-  # Lead.all.each do |l| 
-  #   puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.businessname}', '#{l.email}', #{l.projectname})"
-  # end
-
-  # Elevator.all.each do |e|
-  #   puts "INSERT INTO factelevator (serialnumber, commissioningdate) VALUES (#{e.serial_number}, '#{e.commissioning_date}')"
-  # end
-
-  # Building.all.each do |b|
-  #   puts "INSERT INTO factelevator (buildingid) VALUES ('#{b.id}')"
-  # end
-
-  # Elevator.all.each do |e|
-  #   Building.all.each do |i| 
-  #     Adress.all.each do |a|
-  #       puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
-  #       # conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}')")
-  #     end
-  #   end
-  # end
-
-  # Elevator.all.each do |e|
-  #   puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{e.column.battery.building.id}', '#{e.column.battery.building.customer.id}', '#{e.column.battery.building.adress_id}}')"
-  #   #conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
-  # end
-
-  # Customer.all.each do |c|
-
-    # c.buildings.ids
-    # c.buildings.ids.length
-#     customers = Customer.ids
-#     buildings = Building.ids
-#     batteries = Battery.ids
-#     columns = Column.ids
-#     elevators = Elevator.ids
-
-#     customers.each do |a|
-#       buildings.each do |b|
-#       end
-#       puts buildings.length
-#     end
-
-# I want to calculate how many elevators there are for each columns
-
-#     customers.each do |a|
-#       puts customers.length
-
-#       buildings.each do |b|
-#         puts buildings.length
-
-#         batteries.each do |c|
-#           puts batteries.length
-
-#           columns.each do |d|
-#             puts columns.length
-
-#             elevators.each do |e|
-#               puts elevators.count
-              
-#             end
-#           end
-#         end
-#       end
-#     end
-
-#     array = Array.new
-    
-#       Column.all.each do |d|
-#         Elevator.all.each do |e|
-#           total = d.elevators.count
-#           array.push(total)
-#         end
-#       end
-#       nbelevators = array.count
-#       pp nbelevators
-
-    # customers.each do |a|
-    #   buildings.each do |b|
-    #     batteries.each do |c|
-    #       columns.each do |d|
-    #         nbelevators += d.elevators.count
-    #         puts nbelevators
-    #       end
-    #     end
-    #   end
-    # end
-
-
-  #   puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', '#{"c.building.battery.column.elevator.id"}', '#{"a.city"}')"
-  # end
-
-  # Elevator.all.each do |e|
-  #   Building.all.each do |i| 
-  #     Adress.all.each do |a|
-  #       puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')"
-  #       conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
-  #     end
-  #   end
-  # end
-
-  # Customer.all.each do |c|
-  #   Elevator.all.each do |e|
-  #     Adress.all.each do |a|
-  #       puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', #{e.id}, '#{a.city}')"
-  #     end
-  #   end
-  # end
-
-  # Adress.all.each do |a|
-  #   puts "INSERT INTO factelevator (buildingcity) VALUES ('#{a.city}')"
-  # end
-
-  # Building.all.each do |i|
-  #   puts "INSERT INTO factelevator (customerid) VALUES ('#{i.customer_id}')"
-  # end
-
-  puts "Finished inserting records"
+    puts "Finished inserting records"
   end
 
   task clearmysql: :environment do
@@ -146,6 +26,9 @@ namespace :dwh do
   task clear: :environment do 
     conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
     puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
+    conn.exec("TRUNCATE TABLE dimcustomers RESTART IDENTITY;")
+    conn.exec("TRUNCATE TABLE factquotes RESTART IDENTITY;")
+    conn.exec("TRUNCATE TABLE factcontact RESTART IDENTITY;")
     conn.exec("TRUNCATE TABLE factelevator RESTART IDENTITY;")
     puts "Cleared table"
   end
@@ -155,33 +38,42 @@ namespace :dwh do
     puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
 
     # FACT QUOTES
-    # Quote.all.each do |q|
-    #   puts "INSERT INTO factquotes (quoteid, creation, company, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', #{q.user.company}, #{q.user.email}, #{q.NumELevatorEstimated})"
-    #   conn.exec("INSERT INTO factquotes (quoteid, creation, companyname, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', '#{q.user.company}', '#{q.user.email}', #{q.NumELevatorEstimated})")
-    # end 
+    Quote.all.each do |q|
+      puts "INSERT INTO factquotes (quoteid, creation, company, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', #{q.user.company}, #{q.user.email}, #{q.NumELevatorEstimated})"
+      conn.exec("INSERT INTO factquotes (quoteid, creation, companyname, email, nbelevator) VALUES (#{q.id}, '#{q.created_at}', '#{q.user.company}', '#{q.user.email}', #{q.NumELevatorEstimated})")
+    end 
 
     # FACT CONTACT
-    # Lead.all.each do |l|
-    #   puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.businessname}', '#{l.email}', #{l.projectname})"
-    #   conn.exec("INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.businessname}', '#{l.email}', '#{l.projectname}')")
-    # end
+    Lead.all.each do |l|
+      puts "INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.businessname}', '#{l.email}', #{l.projectname})"
+      conn.exec("INSERT INTO factcontact (contactid, creation, companyname, email, projectname) VALUES (#{l.id}, '#{l.created_at}', '#{l.businessname}', '#{l.email}', '#{l.projectname}')")
+    end
 
     # FACT ELEVATOR
       Elevator.all.each do |e|
-        puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{e.column.battery.building.id}', '#{e.column.battery.building.customer.id}', '#{e.column.battery.building.adress_id}}')"
-        conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{e.column.battery.building.id}', '#{e.column.battery.building.customer.id}', '#{e.column.battery.building.adress_id}}')")
+        puts "INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{e.column.battery.building.id}', '#{e.column.battery.building.customer.id}', '#{e.column.battery.building.adress_id}')"
+        conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{e.column.battery.building.id}', '#{e.column.battery.building.customer.id}', '#{e.column.battery.building.adress_id}')")
       end
 
     # DIMENSION CUSTOMERS
-      # Customer.all.each do |c|
-      #   Quote.all.each do |q|
-      #     Adress.all.each do |a|
-      #       puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', #{q.NumELevatorEstimated}, '#{a.city}')"
-      #       conn.exec("INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', #{q.NumELevatorEstimated}, '#{a.city}')")
-      #     end
-      #   end
-      # end
-    
+      array = Array.new
+      Customer.all.each do |a|
+          Building.all.each do |b|
+            Battery.all.each do |c|
+              Column.all.each do |d|
+                Elevator.all.each do |e|
+                  total = d.elevators.count
+                  array.push(total)
+                end
+              end
+            end
+          end
+        nbelevators = array.count
+        # pp nbelevators
+        puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{a.creation_date}', '#{a.company_name}', '#{a.contact_fullname}', '#{a.company_email}', #{nbelevators}, '#{a.adress.city}')"
+        conn.exec("INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{a.creation_date}', '#{a.company_name}', '#{a.contact_fullname}', '#{a.company_email}', #{nbelevators}, '#{a.adress.city}')")
+        array.clear
+      end
     
     puts "Finished inserting records"
   end
