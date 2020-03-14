@@ -37,74 +37,55 @@ namespace :dwh do
   #   #conn.exec("INSERT INTO factelevator (serialnumber, commissioningdate, buildingid, customerid, buildingcity) VALUES (#{e.serial_number}, '#{e.commissioning_date}', '#{i.id}', '#{i.customer_id}', '#{a.city}')")
   # end
 
-  Customer.all.each do |c|
+  # Customer.all.each do |c|
 
     # c.buildings.ids
     # c.buildings.ids.length
-    customers = Customer.ids
-    buildings = Building.ids
-    batteries = Battery.ids
-    columns = Column.ids
-    elevators = Elevator.ids
+#     customers = Customer.ids
+#     buildings = Building.ids
+#     batteries = Battery.ids
+#     columns = Column.ids
+#     elevators = Elevator.ids
 
-    customers.each do |a|
-      buildings.each do |b|
-      end
-      puts buildings.length
-    end
+#     customers.each do |a|
+#       buildings.each do |b|
+#       end
+#       puts buildings.length
+#     end
 
-I want to calculate how many elevators there are for each columns
+# I want to calculate how many elevators there are for each columns
 
-    customers.each do |a|
-      puts customers.length
+#     customers.each do |a|
+#       puts customers.length
 
-      buildings.each do |b|
-        puts buildings.length
+#       buildings.each do |b|
+#         puts buildings.length
 
-        batteries.each do |c|
-          puts batteries.length
+#         batteries.each do |c|
+#           puts batteries.length
 
-          columns.each do |d|
-            puts columns.length
+#           columns.each do |d|
+#             puts columns.length
 
-            elevators.each do |e|
-              puts elevators.count
+#             elevators.each do |e|
+#               puts elevators.count
               
-            end
-          end
-        end
-      end
-    end
-      # pp Column.ids
-      nbelevators.append(s)
+#             end
+#           end
+#         end
+#       end
+#     end
 
-    columns = Column.all
-    nbelevators = Array.new
-
-    columns.each do |d|
-      s = d.elevators.count
-      nbelevators.push(s)
-    end
-    pp nbelevators.count
-
-    array = Array.new
-
-
-    Column.all.each do |d|
-      Elevator.all.each do |e|
-        total = d.elevators.count
-        array.push(total)
-      end
-    end
-    nbelevators = array.count
-    pp nbelevators.count
-
-
-    d = Column.all
-    battery.d.joins(:d).count("elevators")
-
-    A
-    Battery.where(:id => battery.id).joins(:d => :elevators).count
+#     array = Array.new
+    
+#       Column.all.each do |d|
+#         Elevator.all.each do |e|
+#           total = d.elevators.count
+#           array.push(total)
+#         end
+#       end
+#       nbelevators = array.count
+#       pp nbelevators
 
     # customers.each do |a|
     #   buildings.each do |b|
@@ -117,10 +98,9 @@ I want to calculate how many elevators there are for each columns
     #   end
     # end
 
-    Building.find_by_customer_id(c.buildings.ids)
 
-    puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', '#{"c.building.battery.column.elevator.id"}', '#{"a.city"}')"
-  end
+  #   puts "INSERT INTO dimcustomers (creationdate, companyname, companycontactfullname, companycontactemail, nbelevators, customercity) VALUES ('#{c.creation_date}', '#{c.company_name}', '#{c.contact_fullname}', '#{c.company_email}', '#{"c.building.battery.column.elevator.id"}', '#{"a.city"}')"
+  # end
 
   # Elevator.all.each do |e|
   #   Building.all.each do |i| 
