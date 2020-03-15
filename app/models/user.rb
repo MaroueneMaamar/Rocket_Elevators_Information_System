@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :customers
   has_many :buildings
 
-  belongs_to :role
+  belongs_to :role, :optional => true
   rolify
 
   after_create :assign_default_role
