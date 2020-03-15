@@ -2,7 +2,7 @@
 
 WEEK 5 - DataWareHouse
 
-Video showcase : https://www.youtube.com/watch?v=GW2fWb9IqHY
+Video showcase : https://www.youtube.com/watch?v=s1fqTdb0Oro
 
 Features :
 - Beautiful website;
