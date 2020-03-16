@@ -4,6 +4,14 @@ namespace :dwh do
 
   require 'pg'
 
+  task print: :environment do
+    # mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
+    # puts mysqldb.connection.current_database
+
+    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'marouene', password: 'marouene')
+    puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
+  end
+
   task update: [:cleardwh, :populate]
   
   task clear: :environment do
@@ -29,7 +37,7 @@ namespace :dwh do
   end
 
   task cleardwh: :environment do 
-    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
+    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'marouene', password: 'marouene')
     puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
     conn.exec("TRUNCATE TABLE dimcustomers RESTART IDENTITY;")
     conn.exec("TRUNCATE TABLE factquotes RESTART IDENTITY;")
@@ -205,7 +213,7 @@ namespace :dwh do
 
 
   task populate: :environment do
-    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
+    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'marouene', password: 'marouene')
     puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
 
     # FACT QUOTES
