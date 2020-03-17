@@ -3,25 +3,10 @@ task spec: ["dwh:db:test:prepare"]
 namespace :dwh do
 
   require 'pg'
-
-  task print: :environment do
-    # mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
-    # puts mysqldb.connection.current_database
-
-    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'marouene', password: 'marouene')
-    puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
-  end
-
   task update: [:cleardwh, :populate]
 
-  task test: :environment do
-    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
-    puts mysqldb.connection.current_database
-    rake db:migrate
-  end
-
   task print: :environment do
-    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
+    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
     puts mysqldb.connection.current_database
     # conn = PG::Connection.open(host: 'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com', dbname: 'MaroueneMaamar', user: 'codeboxx', password: 'Codeboxx1!')
     # puts conn
@@ -29,7 +14,7 @@ namespace :dwh do
   
   task clear: :environment do
     # Clearing the database
-    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
+    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
     puts mysqldb.connection.current_database
     mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
     mysqldb.connection.execute("TRUNCATE adresses")
@@ -61,24 +46,24 @@ namespace :dwh do
 
   task fake: :environment do
     # Clearing the database
-    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
+    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
     puts mysqldb.connection.current_database
-    # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
-    # mysqldb.connection.execute("TRUNCATE adresses")
-    # mysqldb.connection.execute("TRUNCATE batteries")
-    # mysqldb.connection.execute("TRUNCATE building_details")
-    # mysqldb.connection.execute("TRUNCATE buildings")
-    # mysqldb.connection.execute("TRUNCATE columns")
-    # mysqldb.connection.execute("TRUNCATE customers")
-    # mysqldb.connection.execute("TRUNCATE elevators")
-    # mysqldb.connection.execute("TRUNCATE leads")
-    # mysqldb.connection.execute("TRUNCATE quotes")
-    # mysqldb.connection.execute("TRUNCATE users")
-    # mysqldb.connection.execute("TRUNCATE roles")
-    # mysqldb.connection.execute("TRUNCATE users_roles")
-    # mysqldb.connection.execute("TRUNCATE employees")
-    # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
-    # puts "Cleared table"
+    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
+    mysqldb.connection.execute("TRUNCATE adresses")
+    mysqldb.connection.execute("TRUNCATE batteries")
+    mysqldb.connection.execute("TRUNCATE building_details")
+    mysqldb.connection.execute("TRUNCATE buildings")
+    mysqldb.connection.execute("TRUNCATE columns")
+    mysqldb.connection.execute("TRUNCATE customers")
+    mysqldb.connection.execute("TRUNCATE elevators")
+    mysqldb.connection.execute("TRUNCATE leads")
+    mysqldb.connection.execute("TRUNCATE quotes")
+    mysqldb.connection.execute("TRUNCATE users")
+    mysqldb.connection.execute("TRUNCATE roles")
+    mysqldb.connection.execute("TRUNCATE users_roles")
+    mysqldb.connection.execute("TRUNCATE employees")
+    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
+    puts "Cleared table"
 
     # Creating the roles
     Role.create!(id: 1, name: 'admin')if Rails.env.development?
