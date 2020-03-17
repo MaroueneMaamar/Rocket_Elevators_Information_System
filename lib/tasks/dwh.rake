@@ -64,21 +64,21 @@ namespace :dwh do
     mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
     puts mysqldb.connection.current_database
     # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
-    mysqldb.connection.execute("TRUNCATE adresses")
-    mysqldb.connection.execute("TRUNCATE batteries")
-    mysqldb.connection.execute("TRUNCATE building_details")
-    mysqldb.connection.execute("TRUNCATE buildings")
-    mysqldb.connection.execute("TRUNCATE columns")
-    mysqldb.connection.execute("TRUNCATE customers")
-    mysqldb.connection.execute("TRUNCATE elevators")
-    mysqldb.connection.execute("TRUNCATE leads")
-    mysqldb.connection.execute("TRUNCATE quotes")
-    mysqldb.connection.execute("TRUNCATE users")
-    mysqldb.connection.execute("TRUNCATE roles")
-    mysqldb.connection.execute("TRUNCATE users_roles")
-    mysqldb.connection.execute("TRUNCATE employees")
+    # mysqldb.connection.execute("TRUNCATE adresses")
+    # mysqldb.connection.execute("TRUNCATE batteries")
+    # mysqldb.connection.execute("TRUNCATE building_details")
+    # mysqldb.connection.execute("TRUNCATE buildings")
+    # mysqldb.connection.execute("TRUNCATE columns")
+    # mysqldb.connection.execute("TRUNCATE customers")
+    # mysqldb.connection.execute("TRUNCATE elevators")
+    # mysqldb.connection.execute("TRUNCATE leads")
+    # mysqldb.connection.execute("TRUNCATE quotes")
+    # mysqldb.connection.execute("TRUNCATE users")
+    # mysqldb.connection.execute("TRUNCATE roles")
+    # mysqldb.connection.execute("TRUNCATE users_roles")
+    # mysqldb.connection.execute("TRUNCATE employees")
     # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
-    puts "Cleared table"
+    # puts "Cleared table"
 
     # Creating the roles
     Role.create!(id: 1, name: 'admin')if Rails.env.development?
