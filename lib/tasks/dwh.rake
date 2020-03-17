@@ -31,7 +31,7 @@ namespace :dwh do
     # Clearing the database
     mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
     puts mysqldb.connection.current_database
-    # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
+    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
     mysqldb.connection.execute("TRUNCATE adresses")
     mysqldb.connection.execute("TRUNCATE batteries")
     mysqldb.connection.execute("TRUNCATE building_details")
@@ -45,7 +45,7 @@ namespace :dwh do
     mysqldb.connection.execute("TRUNCATE roles")
     mysqldb.connection.execute("TRUNCATE users_roles")
     mysqldb.connection.execute("TRUNCATE employees")
-    # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
+    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
     puts "Cleared table"
   end
 
@@ -64,7 +64,7 @@ namespace :dwh do
     mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
     puts mysqldb.connection.current_database
     # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
-    # mysqldb.connection.execute("TRUNCATE adresses")
+    mysqldb.connection.execute("TRUNCATE adresses")
     mysqldb.connection.execute("TRUNCATE batteries")
     mysqldb.connection.execute("TRUNCATE building_details")
     mysqldb.connection.execute("TRUNCATE buildings")
@@ -354,19 +354,19 @@ namespace :dwh do
     }
 
     # set config variables for custom database
-    ENV['SCHEMA'] = "db/schema.rb"
-    Rails.application.config.paths['db']
-    Rails.application.config.paths['db/migrate']
-    Rails.application.config.paths['db/migrate/status']
-    Rails.application.config.paths['db/seeds']
-    Rails.application.config.paths['config/database']
+    # ENV['SCHEMA'] = "db/schema.rb"
+    # Rails.application.config.paths['db']
+    # Rails.application.config.paths['db/migrate']
+    # Rails.application.config.paths['db/migrate/status']
+    # Rails.application.config.paths['db/seeds']
+    # Rails.application.config.paths['config/database']
 
-    # ENV['SCHEMA'] = "db_dwh/schema.rb"
-    # Rails.application.config.paths['db'] = ["db_dwh"]
-    # Rails.application.config.paths['db/migrate'] = ["db_dwh/migrate"]
-    # Rails.application.config.paths['db/migrate/status'] = ["db_dwh/migrate/status"]
-    # Rails.application.config.paths['db/seeds'] = ["db_dwh/seeds.rb"]
-    # Rails.application.config.paths['config/database'] = ["config/dwh_database.yml"]
+    ENV['SCHEMA'] = "db_dwh/schema.rb"
+    Rails.application.config.paths['db'] = ["db_dwh"]
+    Rails.application.config.paths['db/migrate'] = ["db_dwh/migrate"]
+    Rails.application.config.paths['db/migrate/status'] = ["db_dwh/migrate/status"]
+    Rails.application.config.paths['db/seeds'] = ["db_dwh/seeds.rb"]
+    Rails.application.config.paths['config/database'] = ["config/dwh_database.yml"]
   end
 
   task :revert_to_original_config do

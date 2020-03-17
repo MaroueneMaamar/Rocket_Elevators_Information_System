@@ -16,7 +16,16 @@
 #   username: isaeldb
 #   password: password
 #   host: localhost
-
+development:
+  host: codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: codeboxx
+  password: Codeboxx1!
+  socket: /tmp/mysql.sock
+  database: MaroueneMaamar
+  
 production:
   adapter: postgresql
   encoding: unicode
@@ -26,15 +35,7 @@ production:
   host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com
   port: 5432
 
-development:
-  host: codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com
-  adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: codeboxx
-  password: Codeboxx1!
-  socket: /tmp/mysql.sock
-  database: MaroueneMaamar
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
