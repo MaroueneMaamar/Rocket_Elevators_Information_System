@@ -4,6 +4,14 @@ namespace :dwh do
 
   require 'pg'
 
+  task print: :environment do
+    # mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
+    # puts mysqldb.connection.current_database
+
+    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'marouene', password: 'marouene')
+    puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
+  end
+
   task update: [:cleardwh, :populate]
 
   task test: :environment do
