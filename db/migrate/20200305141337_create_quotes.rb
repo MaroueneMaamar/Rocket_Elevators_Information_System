@@ -10,7 +10,7 @@ class CreateQuotes < ActiveRecord::Migration[5.2]
       t.integer :NumBusiness, null: false, default: 0
       t.integer :NumElevatorsDesired, null: false, default: 0
       t.integer :NumOccupantsPerFloor, null: false, default: 0
-      t.integer :NumAppartment, null: false, default: 0
+      #t.integer :NumAppartment, null: false, default: 0
 
       ##QUALITY
       t.integer :Standard

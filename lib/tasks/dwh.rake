@@ -5,12 +5,25 @@ namespace :dwh do
   require 'pg'
 
   task update: [:cleardwh, :populate]
+
+  task test: :environment do
+    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
+    puts mysqldb.connection.current_database
+    rake db:migrate
+  end
+
+  task print: :environment do
+    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
+    puts mysqldb.connection.current_database
+    # conn = PG::Connection.open(host: 'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com', dbname: 'MaroueneMaamar', user: 'codeboxx', password: 'Codeboxx1!')
+    # puts conn
+  end
   
   task clear: :environment do
     # Clearing the database
-    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
+    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
     puts mysqldb.connection.current_database
-    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
+    # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
     mysqldb.connection.execute("TRUNCATE adresses")
     mysqldb.connection.execute("TRUNCATE batteries")
     mysqldb.connection.execute("TRUNCATE building_details")
@@ -24,12 +37,12 @@ namespace :dwh do
     mysqldb.connection.execute("TRUNCATE roles")
     mysqldb.connection.execute("TRUNCATE users_roles")
     mysqldb.connection.execute("TRUNCATE employees")
-    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
+    # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
     puts "Cleared table"
   end
 
   task cleardwh: :environment do 
-    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
+    conn = PG::Connection.open(host: 'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com', dbname: 'MaroueneMaamar', user: 'codeboxx', password: 'Codeboxx1!')
     puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
     conn.exec("TRUNCATE TABLE dimcustomers RESTART IDENTITY;")
     conn.exec("TRUNCATE TABLE factquotes RESTART IDENTITY;")
@@ -40,10 +53,10 @@ namespace :dwh do
 
   task fake: :environment do
     # Clearing the database
-    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['development'])
+    mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
     puts mysqldb.connection.current_database
-    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
-    mysqldb.connection.execute("TRUNCATE adresses")
+    # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 0;")
+    # mysqldb.connection.execute("TRUNCATE adresses")
     mysqldb.connection.execute("TRUNCATE batteries")
     mysqldb.connection.execute("TRUNCATE building_details")
     mysqldb.connection.execute("TRUNCATE buildings")
@@ -56,7 +69,7 @@ namespace :dwh do
     mysqldb.connection.execute("TRUNCATE roles")
     mysqldb.connection.execute("TRUNCATE users_roles")
     mysqldb.connection.execute("TRUNCATE employees")
-    mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
+    # mysqldb.connection.execute("SET FOREIGN_KEY_CHECKS = 1;")
     puts "Cleared table"
 
     # Creating the roles
@@ -205,7 +218,7 @@ namespace :dwh do
 
 
   task populate: :environment do
-    conn = PG::Connection.open(dbname: 'datawarehouse', user: 'jeunex', password: 'codeboxx')
+    conn = PG::Connection.open(host: 'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com', dbname: 'MaroueneMaamar', user: 'codeboxx', password: 'Codeboxx1!')
     puts "Connected to database #{conn.db} as #{conn.user} with password #{conn.pass}"
 
     # FACT QUOTES
@@ -280,6 +293,8 @@ namespace :dwh do
     end
 
     task :migrate do
+      # mysqldb = ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations['production'])
+      # puts mysqldb.connection.current_database
       Rake::Task["db:migrate"].invoke
     end
 
@@ -331,12 +346,19 @@ namespace :dwh do
     }
 
     # set config variables for custom database
-    ENV['SCHEMA'] = "db_dwh/schema.rb"
-    Rails.application.config.paths['db'] = ["db_dwh"]
-    Rails.application.config.paths['db/migrate'] = ["db_dwh/migrate"]
-    Rails.application.config.paths['db/migrate/status'] = ["db_dwh/migrate/status"]
-    Rails.application.config.paths['db/seeds'] = ["db_dwh/seeds.rb"]
-    Rails.application.config.paths['config/database'] = ["config/dwh_database.yml"]
+    ENV['SCHEMA'] = "db/schema.rb"
+    Rails.application.config.paths['db']
+    Rails.application.config.paths['db/migrate']
+    Rails.application.config.paths['db/migrate/status']
+    Rails.application.config.paths['db/seeds']
+    Rails.application.config.paths['config/database']
+
+    # ENV['SCHEMA'] = "db_dwh/schema.rb"
+    # Rails.application.config.paths['db'] = ["db_dwh"]
+    # Rails.application.config.paths['db/migrate'] = ["db_dwh/migrate"]
+    # Rails.application.config.paths['db/migrate/status'] = ["db_dwh/migrate/status"]
+    # Rails.application.config.paths['db/seeds'] = ["db_dwh/seeds.rb"]
+    # Rails.application.config.paths['config/database'] = ["config/dwh_database.yml"]
   end
 
   task :revert_to_original_config do

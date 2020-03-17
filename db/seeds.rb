@@ -1,40 +1,40 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #   Create Roles: 1-admin ; 2-customer ; 3-employee 
-Role.create!(id: 1, name: 'admin')if Rails.env.development?
-Role.create!(id: 2, name: 'customer')if Rails.env.development?
-Role.create!(id: 3, name: 'employee')if Rails.env.development?
+# Role.create!(id: 1, name: 'admin')if Rails.env.development?
+# Role.create!(id: 2, name: 'customer')if Rails.env.development?
+# Role.create!(id: 3, name: 'employee')if Rails.env.development?
 
-# Generate employee user and account
-u = User.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-e = Employee.create!(name: 'Genest', firstName: 'Nicolas', title: 'Comm Rep', email: 'nicolas.genest@codeboxx.biz', user: u) if Rails.env.development?
+# # Generate employee user and account
+# u = User.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+# e = Employee.create!(name: 'Genest', firstName: 'Nicolas', title: 'Comm Rep', email: 'nicolas.genest@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'nadya.fortier@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
-e = Employee.create!(name: 'Fortier', firstName: 'Nadya', title: 'Director', email: 'nadya.fortier@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'nadya.fortier@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+# e = Employee.create!(name: 'Fortier', firstName: 'Nadya', title: 'Director', email: 'nadya.fortier@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'martin.chantal@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
-e = Employee.create!(name: 'Chantal', firstName: 'Martin', title: 'Director Assistant', email: 'martin.chantal@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'martin.chantal@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+# e = Employee.create!(name: 'Chantal', firstName: 'Martin', title: 'Director Assistant', email: 'martin.chantal@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'mathieu.houde@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
-e = Employee.create!(name: 'Houde', firstName: 'Mathieu', title: 'Captain', email: 'mathieu.houde@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'mathieu.houde@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
+# e = Employee.create!(name: 'Houde', firstName: 'Mathieu', title: 'Captain', email: 'mathieu.houde@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'remi.gagnon@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-e = Employee.create!(name: 'Gagnon', firstName: 'Remi', title: 'Engineer', email: 'remi.gagnon@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'remi.gagnon@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+# e = Employee.create!(name: 'Gagnon', firstName: 'Remi', title: 'Engineer', email: 'remi.gagnon@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'mathieu.lefrancois@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-e = Employee.create!(name: 'Lefrancois', firstName: 'Mathieu', title: 'Engineer', email: 'mathieu.lefrancois@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'mathieu.lefrancois@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+# e = Employee.create!(name: 'Lefrancois', firstName: 'Mathieu', title: 'Engineer', email: 'mathieu.lefrancois@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'serge.savoie@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-e = Employee.create!(name: 'Savoie', firstName: 'Serge', title: 'Engineer', email: 'serge.savoie@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'serge.savoie@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+# e = Employee.create!(name: 'Savoie', firstName: 'Serge', title: 'Engineer', email: 'serge.savoie@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'david.boutin@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-e = Employee.create!(name: 'Boutin', firstName: 'David', title: 'Engineer', email: 'david.boutin@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'david.boutin@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+# e = Employee.create!(name: 'Boutin', firstName: 'David', title: 'Engineer', email: 'david.boutin@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-e = Employee.create!(name: 'Lortie', firstName: 'Mathieu', title: 'Engineer', email: 'mathieu.lortie@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+# e = Employee.create!(name: 'Lortie', firstName: 'Mathieu', title: 'Engineer', email: 'mathieu.lortie@codeboxx.biz', user: u) if Rails.env.development?
 
-u = User.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
-e = Employee.create!(name: 'Carrier', firstName: 'Thomas', title: 'Engineer', email: 'thomas.carrier@codeboxx.biz', user: u) if Rails.env.development?
+# u = User.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+# e = Employee.create!(name: 'Carrier', firstName: 'Thomas', title: 'Engineer', email: 'thomas.carrier@codeboxx.biz', user: u) if Rails.env.development?
 
 #   Generate fake Adresses
 # 100.times do    

@@ -18,7 +18,6 @@
 #   host: localhost
 
 production:
-
   adapter: postgresql
   encoding: unicode
   pool: 5
@@ -28,15 +27,21 @@ production:
   port: 5432
 
 development:
-  <<: *default
+  host: codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: codeboxx
+  password: Codeboxx1!
+  socket: /tmp/mysql.sock
   database: MaroueneMaamar
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: MaroueneMaamar_test
+# test:
+#   <<: *default
+#   database: MaroueneMaamar_test
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
